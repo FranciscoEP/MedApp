@@ -8,9 +8,14 @@ const logger = require('morgan')
 const path = require('path')
 const session = require('express-session')
 const passport = require('./config/passport')
+const cors = require('cors')
 
 mongoose
-  .connect('mongodb://localhost/backend', { useNewUrlParser: true })
+  .connect('mongodb://localhost/backend', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
