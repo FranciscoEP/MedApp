@@ -1,16 +1,30 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-// import Signup from './pages/Signup'
-// import Login from './pages/Login'
+import Login from './pages/Login'
 import Home from './pages/Home'
+import About from './pages/About'
+import NavBar from './components/NavBar'
+import Signup from './pages/Signup'
+import Profile from './pages/Profile'
+import Product from './pages/Product'
+import CreateProduct from './pages/CreateProduct'
+import ProfileUpdate from './pages/ProfileUpdate'
+import PrivateRoute from './components/PrivateRoute'
 
 const AppRouter = () => (
   <Router>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      {/* <Route exact path="/signup" component={Signup} />
-      <Route exact path="/login" component={Login} /> */}
-    </Switch>
+    <NavBar>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
+        <PrivateRoute exact path="/profile" component={Profile} />
+        <PrivateRoute exact path="/profile/edit" component={ProfileUpdate} />
+        <PrivateRoute exact path="/product" component={Product} />
+        <PrivateRoute exact path="/product/add" component={CreateProduct} />
+      </Switch>
+    </NavBar>
   </Router>
 )
 

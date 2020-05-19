@@ -35,6 +35,13 @@ app.use(
     saveUninitialized: true,
   })
 )
+
+app.use(
+  cors({
+    credentials: true,
+    origin: ['http://localhost:3001'],
+  })
+)
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -46,7 +53,10 @@ app.use(cookieParser())
 
 const index = require('./routes/index')
 const auth = require('./routes/auth')
+const product = require('./routes/product')
+const profile = require('./routes/profile')
 app.use('/', index)
 app.use('/auth', auth)
-
+app.use('/product', product)
+app.use('/profile', profile)
 module.exports = app

@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import AppRouter from './router'
 import * as serviceWorker from './serviceWorker'
+import 'antd/dist/antd.css'
+import MyProvider from './context'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <MyProvider>
     <AppRouter />
-  </React.StrictMode>,
+  </MyProvider>,
   document.getElementById('root')
 )
 
