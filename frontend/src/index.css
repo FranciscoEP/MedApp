@@ -1,5 +1,3 @@
-@import '~antd/dist/antd.compact.css';
-
 body {
   margin: 0 !important;
   padding: 0 !important;
@@ -14,12 +12,20 @@ body {
   padding: 0;
 }
 
-.ant-layout-content {
-  height: 40vw;
-  padding: 0;
-  margin: 0;
+
+.background-img {
+  background-image: url('./assets/hero.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 700px;
+
 }
 
+.site-layout-content {
+  background: #fff;
+
+  min-height: 540px;
+}
 
 
 .ant-layout-header {
@@ -35,62 +41,6 @@ body {
   float: left;
 }
 
-/* .Layout Link {
-  color: white;
-}
-
-
-#components-layout-demo-custom-trigger .trigger {
-  font-size: 18px;
-  line-height: 64px;
-  padding: 0 0px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-#components-layout-demo-custom-trigger .trigger:hover {
-  color: #1890ff;
-}
-
-#components-layout-demo-custom-trigger .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-}
-
-.site-layout .site-layout-background {
-  background-color: #ffccc7;
-}
-
-.site-layout {
-  background-color: #ffccc7 !important;
-}
-
-.ant-layout-sider-children {
-  background-color: #ffccc7;
-}
-
-.ant-menu {
-  background-color: #ffccc7 !important;
-}
-
-.ant-layout-footer {
-  background-color: #ffccc7 !important;
-}
-
-.ant-menu-inline,
-.ant-menu-vertical,
-.ant-menu-vertical-left {
-  border-right: 1px solid #ffccc7 !important;
-}*/
-
-
-.background-img {
-  background-image: url(https://www.freepik.com/free-vector/medicine-elements-background-flat-style_1825658.htm#page=1&query=doctor&position=47);
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-}
 
 .login-form {
   margin-top: 10%;
@@ -109,4 +59,104 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.product-card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-card img {
+  width: 200px;
+}
+
+
+
+.container {
+  min-width: 600px;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+}
+
+.left-column {
+  width: 65%;
+  position: relative;
+}
+
+.right-column {
+  width: 35%;
+  margin-top: 60px;
+}
+
+.left-column img {
+  width: 400px;
+  position: absolute;
+  left: 100px;
+  top: 20px;
+  opacity: 0;
+  transition: all 3s ease;
+}
+
+.left-column img.active {
+  opacity: 1;
+}
+
+.product-description {
+  border-bottom: 1px solid #E1E8EE;
+  margin-bottom: 20px;
+}
+
+.product-description span {
+  font-size: 12px;
+  color: #358ED7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.product-description h1 {
+  font-weight: 300;
+  font-size: 52px;
+  color: #43484D;
+  letter-spacing: -2px;
+}
+
+.product-description p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #86939E;
+  line-height: 24px;
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+}
+
+.product-price span {
+  font-size: 26px;
+  font-weight: 300;
+  color: #43474D;
+  margin-right: 20px;
+}
+
+.cart-btn {
+  display: inline-block;
+  background-color: #7DC855;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 12px 30px;
+  transition: all .5s;
+}
+
+.cart-btn:hover {
+  background-color: #64af3d;
+}
+
+.tags {
+  display: flex;
+  justify-content: space-around;
 }

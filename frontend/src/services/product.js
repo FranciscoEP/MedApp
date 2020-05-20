@@ -14,11 +14,11 @@ const PRODUCT_SERVICE = {
   SHOW_PRODUCTS: async () => {
     return await service.get('/product/show')
   },
-  SHOW_PRODUCT: async (productId) => {
-    return await service.get(`/product/${productId}`)
+  SHOW_PRODUCT: async (id) => {
+    return await service.get(`/product/${id}`)
   },
-  EDIT_PRODUCT: async ({ productId, product }) => {
-    return await service.patch(`/product/edit/${productId}`, product)
+  EDIT_PRODUCT: async (id, product) => {
+    return await service.patch(`/product/edit/${id}`, product)
   },
   DELETE_PRODUCT: async (productId) => {
     return await service.delete(`/product/${productId}`, productId)

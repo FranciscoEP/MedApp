@@ -68,7 +68,7 @@ export class NavBar extends Component {
                   </SubMenu>
                 </Menu>
               </Header>
-              <Content style={{ padding: '0 50px' }}>
+              <Content>
                 <div className="site-layout-content">
                   <>{this.props.children}</>
                 </div>

@@ -10,6 +10,8 @@ import Product from './pages/Product'
 import CreateProduct from './pages/CreateProduct'
 import ProfileUpdate from './pages/ProfileUpdate'
 import PrivateRoute from './components/PrivateRoute'
+import DetailProduct from './pages/DetailProduct'
+import EditProduct from './pages/EditProduct'
 
 const AppRouter = () => (
   <Router>
@@ -23,6 +25,8 @@ const AppRouter = () => (
         <PrivateRoute exact path="/profile/edit" component={ProfileUpdate} />
         <PrivateRoute exact path="/product" component={Product} />
         <PrivateRoute exact path="/product/add" component={CreateProduct} />
+        <PrivateRoute exact path="/product/:id" component={DetailProduct} />
+        <PrivateRoute exact path="/product/edit/:id" component={EditProduct} />
       </Switch>
     </NavBar>
   </Router>

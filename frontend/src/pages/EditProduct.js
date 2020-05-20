@@ -3,8 +3,8 @@ import ProductForm from '../components/ProductForm'
 import PRODUCT_SERVICE from '../services/product'
 import '../index.css'
 
-export class CreateProduct extends Component {
-  state = { imgUrl: '' }
+export class EditProduct extends Component {
+  state = { product: '', imgUrl: '' }
 
   setImgURL = (imgURL) => {
     this.setState({
@@ -23,16 +23,23 @@ export class CreateProduct extends Component {
     }
   }
 
+  componentDidMount = async () => {
+    const response = await PRODUCT_SERVICE.SHOW_PRODUCT(this.props.match.params.id)
+    const product = response.data.product
+    this.setState({ product })
+  }
+
   onFinish = async (product) => {
     const { imgURL } = this.state
-    await PRODUCT_SERVICE.ADD_PRODUCT({ ...product, imgURL })
+    const prodId = this.props.match.params.id
+    const response = await PRODUCT_SERVICE.EDIT_PRODUCT(prodId, { ...product, imgURL })
     this.props.history.push('/product')
   }
 
   render() {
     return (
       <div>
-        <h1>Add a new product</h1>
+        <h1>Edit Product</h1>
         <div>
           <ProductForm
             title="Equipment Information"
@@ -48,4 +55,4 @@ export class CreateProduct extends Component {
   }
 }
 
-export default CreateProduct
+export default EditProduct
