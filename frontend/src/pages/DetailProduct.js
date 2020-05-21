@@ -35,7 +35,7 @@ class DetailProduct extends Component {
               <br />
             </div>
             <Button type="primary" size="middle">
-              <Link to="/order">Order</Link>
+              <Link to={`/product/booking/${this.props.match.params.id}`}>Order</Link>
             </Button>
           </div>
         </main>

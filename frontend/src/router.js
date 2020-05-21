@@ -12,6 +12,9 @@ import ProfileUpdate from './pages/ProfileUpdate'
 import PrivateRoute from './components/PrivateRoute'
 import DetailProduct from './pages/DetailProduct'
 import EditProduct from './pages/EditProduct'
+import CreateBooking from './pages/CreateBooking'
+import Bookings from './pages/Bookings'
+import DetailBooking from './pages/DetailBooking'
 
 const AppRouter = () => (
   <Router>
@@ -27,6 +30,9 @@ const AppRouter = () => (
         <PrivateRoute exact path="/product/add" component={CreateProduct} />
         <PrivateRoute exact path="/product/:id" component={DetailProduct} />
         <PrivateRoute exact path="/product/edit/:id" component={EditProduct} />
+        <PrivateRoute exact path="/product/booking/:id" component={CreateBooking} />
+        <PrivateRoute exact path="/bookings/" component={Bookings} />
+        <PrivateRoute exact path="/bookings/:id" component={DetailBooking} />
       </Switch>
     </NavBar>
   </Router>

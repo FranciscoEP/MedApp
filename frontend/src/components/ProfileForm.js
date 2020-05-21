@@ -2,7 +2,6 @@ import React from 'react'
 import { Form, Input, Button, Upload } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
-const { TextArea } = Input
 
 function ProfileForm({ onFinish, onFinishFailed, onChange }) {
   const layout = {

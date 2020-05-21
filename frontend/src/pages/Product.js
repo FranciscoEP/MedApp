@@ -6,7 +6,6 @@ import '../index.css'
 class Product extends Component {
   state = {
     products: [],
-    product: [],
   }
   componentDidMount = async () => {
     const response = await PRODUCT_SERVICE.SHOW_PRODUCTS()
@@ -14,18 +13,7 @@ class Product extends Component {
     this.setState({
       products,
     })
-    // console.log(response)
-    // console.log(response.data)
   }
-
-  // deleteProduct = async (id) => {
-  //   const response = await PRODUCT_SERVICE.DELETE_PRODUCT(id)
-  //   console.log(response)
-  //   const { products } = this.state
-  //   console.log(products)
-  //   const newArray = products.filter((product) => product._id !== product)
-  //   console.log(newArray)
-  // }
 
   deleteProduct = async (id) => {
     await PRODUCT_SERVICE.DELETE_PRODUCT(id)

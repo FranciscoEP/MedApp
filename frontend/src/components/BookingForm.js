@@ -1,10 +1,10 @@
 import React from 'react'
-import { Form, Input, Button, Upload } from 'antd'
-import { UploadOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
-const { TextArea } = Input
+import { Form, Input, Button } from 'antd'
 
-function BookingForm({ onFinish, onFinishFailed, onChange }) {
+import { Link } from 'react-router-dom'
+import { MyContext } from '../context'
+
+function BookingForm({ onFinish, onChange }) {
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 8 },
@@ -14,35 +14,38 @@ function BookingForm({ onFinish, onFinishFailed, onChange }) {
     wrapperCol: { offset: 8, span: 8 },
   }
 
-  const props = {
-    name: 'imageURL',
-    action: 'http://localhost:3000/product/upload',
-  }
-
   return (
-    <Form {...layout} name="basic" onFinish={onFinish}>
-      <Form.Item label="Name" name="name">
-        <Input />
-      </Form.Item>
-
-      <Form.Item label="Address" name="address">
-        <Input />
-      </Form.Item>
-
-      <Form.Item label="Mobile" name="mobile">
-        <Input />
-      </Form.Item>
-
-      <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-        <Button type="primary" size="middle">
-          <Link to="/profile">Go back</Link>
-        </Button>
-      </Form.Item>
-    </Form>
+    <MyContext.Consumer>
+      {({ loggedUser }) => (
+        <Form
+          {...layout}
+          name="basic"
+          onFinish={onFinish}
+          initialValues={{ address: loggedUser.address }}
+        >
+          >
+          <Form.Item label="Address" name="address">
+            <Input />
+          </Form.Item>
+          <Form.Item label="Initial Date" name="initialDate">
+            <Input />
+          </Form.Item>
+          <Form.Item label="Final Date" name="finalDate">
+            <Input />
+          </Form.Item>
+          <Form.Item {...tailLayout}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+            <Button type="primary" size="middle">
+              <Link to="/">Go back</Link>
+            </Button>
+          </Form.Item>
+        </Form>
+      )}
+    </MyContext.Consumer>
   )
 }
 
+BookingForm.contextType = MyContext
 export default BookingForm

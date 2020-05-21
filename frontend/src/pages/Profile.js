@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Button } from 'antd'
 import { Link } from 'react-router-dom'
 import { Card } from 'antd'
-import { UserOutlined } from '@ant-design/icons'
 import { MyContext } from '../context'
 
 const { Meta } = Card
@@ -29,6 +28,9 @@ export default class Profile extends Component {
               ,
               <Button type="primary" size="middle">
                 <Link to="/profile/edit">Edit profile</Link>
+              </Button>
+              <Button type="primary" size="middle">
+                <Link to="/bookings">Bookings</Link>
               </Button>
             </div>
           </>

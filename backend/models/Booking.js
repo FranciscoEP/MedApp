@@ -3,10 +3,11 @@ const Schema = mongoose.Schema
 
 const bookingSchema = new Schema(
   {
-    owner: { type: Schema.Types.ObjectId, ref: 'User' },
+    client: { type: Schema.Types.ObjectId, ref: 'User' },
     equipment: { type: Schema.Types.ObjectId, ref: 'Product' },
-    InitialDate: String,
-    FinalDate: String,
+    address: String,
+    initialDate: String,
+    finalDate: String,
   },
   {
     versionKey: false,

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from 'antd'
 import { MyContext } from '../context'
-import { DeleteOutlined, PlusOutlined } from '@ant-design/icons'
+import { DeleteOutlined } from '@ant-design/icons'
 import '../index.css'
 
 const { Meta } = Card
@@ -21,7 +21,7 @@ const ProductCard = ({ name, _id, description, pricing, owner, imgURL, deletePro
               ]
             }
           >
-            <Meta title={name} description={description} title={`By: ${owner && owner.name}`} />
+            <Meta description={pricing} title={name} />
           </Card>
           <div className="tags">
             <Link to={`/product/edit/${_id}`}>Edit </Link>
@@ -33,7 +33,7 @@ const ProductCard = ({ name, _id, description, pricing, owner, imgURL, deletePro
     </MyContext.Consumer>
   )
 }
-
+ProductCard.contextType = MyContext
 export default ProductCard
 
 // {/* <Card

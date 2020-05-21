@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PROFILE_SERVICE from '../services/profile'
 import ProfileForm from '../components/ProfileForm'
-import { Link } from 'react-router-dom'
 
 import '../index.css'
 
@@ -33,7 +32,7 @@ export class ProfileUpdate extends Component {
 
   onFinish = async (profile) => {
     const { imgURL } = this.state
-    const response = await PROFILE_SERVICE.PROFILE_UPDATE({ ...profile, imgURL })
+    await PROFILE_SERVICE.PROFILE_UPDATE({ ...profile, imgURL })
     this.props.history.push('/profile')
   }
 

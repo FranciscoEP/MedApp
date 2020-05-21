@@ -32,7 +32,7 @@ export class EditProduct extends Component {
   onFinish = async (product) => {
     const { imgURL } = this.state
     const prodId = this.props.match.params.id
-    const response = await PRODUCT_SERVICE.EDIT_PRODUCT(prodId, { ...product, imgURL })
+    await PRODUCT_SERVICE.EDIT_PRODUCT(prodId, { ...product, imgURL })
     this.props.history.push('/product')
   }
 

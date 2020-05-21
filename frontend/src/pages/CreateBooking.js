@@ -1,47 +1,24 @@
 import React, { Component } from 'react'
-import ProductForm from '../components/ProductForm'
-import PRODUCT_SERVICE from '../services/product'
+import BookingForm from '../components/BookingForm'
+import BOOKING_SERVICE from '../services/booking'
 import '../index.css'
 
 export class CreateProduct extends Component {
-  state = { imgUrl: '' }
+  state = {}
 
-  setImgURL = (imgURL) => {
-    this.setState({
-      imgURL,
-    })
-  }
-
-  onChange = (info) => {
-    if (info.file.status !== 'uploading') {
-      this.setImgURL(info.file.response.secure_url)
-    }
-    if (info.file.status === 'done') {
-      console.log(`${info.file.name} file uploaded successfully`)
-    } else if (info.file.status === 'error') {
-      console.log(`${info.file.name} file upload failed.`)
-    }
-  }
-
-  onFinish = async (product) => {
-    const { imgURL } = this.state
-    await PRODUCT_SERVICE.ADD_PRODUCT({ ...product, imgURL })
-    this.props.history.push('/product')
+  onFinish = async (values) => {
+    const idProd = this.props.match.params.id
+    const response = await BOOKING_SERVICE.ADD_BOOKING(values, idProd)
+    console.log(response)
+    this.props.history.push('/profile')
   }
 
   render() {
     return (
       <div>
-        <h1>Add a new product</h1>
+        <h1>Book your equipment</h1>
         <div>
-          <ProductForm
-            title="Equipment Information"
-            onFinish={this.onFinish}
-            onFinishFailed={this.onFinishFailed}
-            setImgURL={this.setImgURL}
-            img={this.state.ImgURL}
-            onChange={this.onChange}
-          />
+          <BookingForm title="Equipment Information" onFinish={this.onFinish} />
         </div>
       </div>
     )
