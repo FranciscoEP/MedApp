@@ -10,9 +10,7 @@ class DetailProduct extends Component {
   componentDidMount = async () => {
     const response = await PRODUCT_SERVICE.SHOW_PRODUCT(this.props.match.params.id)
     const product = response.data.product
-    console.log(response)
     this.setState({ product })
-    console.log(product)
   }
 
   render() {

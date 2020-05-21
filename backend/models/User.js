@@ -8,7 +8,7 @@ const userSchema = new Schema(
     password: String,
     address: String,
     mobile: String,
-    image: String,
+    imgURL: String,
   },
   { timestamps: true }
 )

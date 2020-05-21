@@ -2,7 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from 'antd'
 import { MyContext } from '../context'
-import { DeleteOutlined } from '@ant-design/icons'
+import { DeleteOutlined, PlusOutlined } from '@ant-design/icons'
+import '../index.css'
 
 const { Meta } = Card
 
@@ -10,21 +11,24 @@ const ProductCard = ({ name, _id, description, pricing, owner, imgURL, deletePro
   return (
     <MyContext.Consumer>
       {({ loggedUser }) => (
-        <div>
+        <>
           <Card
             style={{ width: 300 }}
             cover={<img alt="example" src={imgURL} />}
-            actions={[<DeleteOutlined key="delete" onClick={() => deleteProduct(_id)} />]}
+            actions={
+              loggedUser?.email === owner?.email && [
+                <DeleteOutlined key="delete" onClick={() => deleteProduct(_id)} />,
+              ]
+            }
           >
             <Meta title={name} description={description} title={`By: ${owner && owner.name}`} />
           </Card>
-
           <div className="tags">
             <Link to={`/product/edit/${_id}`}>Edit </Link>
 
             <Link to={`/product/${_id}`}>More information</Link>
           </div>
-        </div>
+        </>
       )}
     </MyContext.Consumer>
   )

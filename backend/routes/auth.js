@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+
 const { catchErrors, isLogged } = require('../middlewares/catchErrors')
 const { signup, login, logout, currentUser } = require('../controllers/auth')
 const passport = require('passport')

@@ -23,13 +23,13 @@ class Login extends Component {
   onFinish = async (values) => {
     this.setState({ loading: true })
     const response = await handleAsync(() => AUTH_SERVICE.LOGIN(values))
-    // console.log(response)
+    // console.log(response.user)
     if (response.err) {
       this.setState({ msg: 'Email or password incorrect.' })
       //this.setState({ msg: response.err.message })
     } else {
       this.setState({ msg: 'User logged' })
-      this.context.logUser(response)
+      this.context.logUser(response.user)
       this.props.history.push('/profile')
     }
     this.setState({ loading: false })

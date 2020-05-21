@@ -22,6 +22,6 @@ exports.editProduct = async (req, res) => {
 }
 
 exports.deleteProduct = async (req, res) => {
-  const deleteProduct = await Product.findByIdAndDelete(req.params.id)
-  res.status(200).json({ deleteProduct })
+  const product = await Product.findByIdAndDelete(req.params.id)
+  res.status(200).json({ product })
 }

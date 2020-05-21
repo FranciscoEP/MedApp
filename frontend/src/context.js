@@ -6,11 +6,14 @@ export const MyContext = createContext()
 export default class MyProvider extends Component {
   state = {
     loggedUser: null,
+    loading: true,
   }
 
-  async componentDidMount() {
+  async componentWillMount() {
     const response = await handleAsync(AUTH_SERVICE.CURRENT_USER)
+    console.log(response)
     this.logUser(response.user)
+    this.setState({ loading: false })
   }
 
   logUser = (user) => {
@@ -25,11 +28,11 @@ export default class MyProvider extends Component {
   }
 
   render() {
-    const { loggedUser } = this.state
-    // console.log(loggedUser)
+    const { loggedUser, loading } = this.state
     const { logUser, logout } = this
+    console.log(logUser)
     return (
-      <MyContext.Provider value={{ loggedUser, logUser, logout }}>
+      <MyContext.Provider value={{ loggedUser, logUser, logout, loading }}>
         {this.props.children}
       </MyContext.Provider>
     )

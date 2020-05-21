@@ -20,8 +20,8 @@ const PRODUCT_SERVICE = {
   EDIT_PRODUCT: async (id, product) => {
     return await service.patch(`/product/edit/${id}`, product)
   },
-  DELETE_PRODUCT: async (productId) => {
-    return await service.delete(`/product/${productId}`, productId)
+  DELETE_PRODUCT: async (id) => {
+    return await service.delete(`/product/${id}`)
   },
 }
 

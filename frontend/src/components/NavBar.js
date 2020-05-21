@@ -36,12 +36,14 @@ export class NavBar extends Component {
                     <Link to="/"></Link>Home
                   </Menu.Item>
 
-                  <Menu.Item key="2">
-                    <Link to="/signup"></Link>Sign up
-                  </Menu.Item>
-                  <Menu.Item key="3">
-                    <Link to="/login"></Link>Login
-                  </Menu.Item>
+                  <>
+                    <Menu.Item key="2">
+                      <Link to="/signup"></Link>Sign up
+                    </Menu.Item>
+                    <Menu.Item key="3">
+                      <Link to="/login"></Link>Login
+                    </Menu.Item>
+                  </>
 
                   <SubMenu title="Products" key="4">
                     <Menu.Item key="setting:1">
@@ -50,17 +52,13 @@ export class NavBar extends Component {
                     <Menu.Item key="setting:2">
                       <Link to="/product/add"></Link>Promote a new product
                     </Menu.Item>
-                    <Menu.Item key="setting:3">
-                      <Link to="/edit/profile"></Link>...?
-                    </Menu.Item>
                   </SubMenu>
-
                   <SubMenu icon={<UserOutlined />} title="Profile" key="5">
                     <Menu.Item key="setting:1">
                       <Link to="/profile"></Link>View Profile
                     </Menu.Item>
                     <Menu.Item key="setting:2">
-                      <Link to="/edit/profile"></Link>Edit Profile
+                      <Link to="/profile/edit"></Link>Edit your profile
                     </Menu.Item>
                     <Menu.Item key="setting:3" icon={<LogoutOutlined />} onClick={logout}>
                       Log out

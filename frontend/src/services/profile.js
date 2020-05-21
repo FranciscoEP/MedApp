@@ -9,7 +9,7 @@ const service = axios.create({
 
 const PROFILE_SERVICE = {
   PROFILE_UPDATE: async (data) => {
-    return await service.post('/profile/edit', data)
+    return await service.patch('/profile/edit', data)
   },
 }
 

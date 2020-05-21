@@ -6,6 +6,7 @@ import '../index.css'
 class Product extends Component {
   state = {
     products: [],
+    product: [],
   }
   componentDidMount = async () => {
     const response = await PRODUCT_SERVICE.SHOW_PRODUCTS()
@@ -17,15 +18,20 @@ class Product extends Component {
     // console.log(response.data)
   }
 
+  // deleteProduct = async (id) => {
+  //   const response = await PRODUCT_SERVICE.DELETE_PRODUCT(id)
+  //   console.log(response)
+  //   const { products } = this.state
+  //   console.log(products)
+  //   const newArray = products.filter((product) => product._id !== product)
+  //   console.log(newArray)
+  // }
+
   deleteProduct = async (id) => {
     await PRODUCT_SERVICE.DELETE_PRODUCT(id)
     const { products } = this.state
-    console.log(products)
-    const deleted = products.filter((prod) => prod._id !== prod)
-    console.log(deleted)
-    this.setState({ products: deleted })
-    this.props.history.push('/product')
-    console.log(products)
+    const newArray = products.filter((product) => product._id !== id)
+    this.setState({ products: newArray })
   }
 
   render() {
@@ -33,11 +39,7 @@ class Product extends Component {
       <>
         <div className="product-card">
           {this.state.products.map((product) => (
-            <ProductCard
-              deleteProduct={() => this.deleteProduct(product._id)}
-              {...product}
-              key={product._id}
-            />
+            <ProductCard deleteProduct={this.deleteProduct} {...product} key={product._id} />
           ))}
         </div>
       </>
