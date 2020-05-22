@@ -39,8 +39,8 @@ export class EditProduct extends Component {
   render() {
     return (
       <div>
-        <h1>Edit Product</h1>
         <div className="addForm">
+          <h1>Edit Product</h1>
           <ProductForm
             title="Equipment Information"
             onFinish={this.onFinish}
