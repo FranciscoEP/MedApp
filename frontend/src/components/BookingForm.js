@@ -4,7 +4,7 @@ import { Form, Input, Button } from 'antd'
 import { Link } from 'react-router-dom'
 import { MyContext } from '../context'
 
-function BookingForm({ onFinish, onChange }) {
+function BookingForm({ onFinish }) {
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 8 },
@@ -23,29 +23,42 @@ function BookingForm({ onFinish, onChange }) {
           onFinish={onFinish}
           initialValues={{ address: loggedUser.address }}
         >
+          <Form.Item
+            label="Address"
+            name="address"
+            rules={[{ required: true, message: 'Please input your Address!' }]}
           >
-          <Form.Item label="Address" name="address">
             <Input />
           </Form.Item>
-          <Form.Item label="Initial Date" name="initialDate">
+          <Form.Item
+            label="Mobile"
+            name="mobile"
+            rules={[{ required: true, message: 'Please input your mobile!' }]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item label="Final Date" name="finalDate">
-            <Input />
-          </Form.Item>
-          <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-            <Button type="primary" size="middle">
-              <Link to="/">Go back</Link>
-            </Button>
-          </Form.Item>
+          <div>
+            <Form.Item {...tailLayout}>
+              <Button
+                type="primary"
+                htmlType="submit"
+                style={{ backgroundColor: '#faad14', borderColor: '#faad14', margin: 60 }}
+              >
+                Submit
+              </Button>
+              <Button
+                type="primary"
+                size="middle"
+                style={{ backgroundColor: '#faad14', borderColor: '#faad14', margin: 60 }}
+              >
+                <Link to="/bookings">Go back</Link>
+              </Button>
+            </Form.Item>
+          </div>
         </Form>
       )}
     </MyContext.Consumer>
   )
 }
 
-BookingForm.contextType = MyContext
 export default BookingForm

@@ -23,10 +23,9 @@ class Login extends Component {
   onFinish = async (values) => {
     this.setState({ loading: true })
     const response = await handleAsync(() => AUTH_SERVICE.LOGIN(values))
-    // console.log(response.user)
+
     if (response.err) {
       this.setState({ msg: 'Email or password incorrect.' })
-      //this.setState({ msg: response.err.message })
     } else {
       this.setState({ msg: 'User logged' })
       this.context.logUser(response.user)
@@ -44,7 +43,7 @@ class Login extends Component {
 
   render() {
     return (
-      <>
+      <div className="login-bcg">
         <br />
         <h1 style={{ textAlign: 'Center', fontSize: 30 }}>Log in</h1>
         <Form
@@ -84,19 +83,28 @@ class Login extends Component {
           </Form.Item>
 
           <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit" className="login-form-button">
+            <Button
+              type="primary"
+              htmlType="submit"
+              block
+              className="login-form-button"
+              style={{ backgroundColor: '#faad14', borderColor: '#faad14' }}
+            >
               Log in
             </Button>
             <br />
             <br />
-            Don't have an account ? <a href="/signup">Sign up</a>
+            Don't have an account ?{' '}
+            <a style={{ color: '#faad14' }} href="/signup">
+              Sign up
+            </a>
           </Form.Item>
         </Form>
         <div className="message-container">
           {!this.state.loading && <p>{this.state.msg}</p>}
           {this.state.loading && <p>Loading...</p>}
         </div>
-      </>
+      </div>
     )
   }
 }

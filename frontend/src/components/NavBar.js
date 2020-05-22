@@ -3,7 +3,15 @@ import { Link, withRouter } from 'react-router-dom'
 import '../index.css'
 import { MyContext } from '../context'
 import { Layout, Menu } from 'antd'
-import { HomeOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons'
+import {
+  HomeOutlined,
+  LogoutOutlined,
+  UserOutlined,
+  SettingOutlined,
+  UserAddOutlined,
+  LoginOutlined,
+  BoldOutlined,
+} from '@ant-design/icons'
 
 const { Header, Content, Footer } = Layout
 const { SubMenu } = Menu
@@ -32,37 +40,63 @@ export class NavBar extends Component {
                   theme="dark"
                   mode="horizontal"
                 >
-                  <Menu.Item key="1" icon={<HomeOutlined />}>
+                  <Menu.Item key="mail" icon={<HomeOutlined />}>
                     <Link to="/"></Link>Home
                   </Menu.Item>
 
-                  <Menu.Item key="2">
-                    <Link to="/signup"></Link>Sign up
-                  </Menu.Item>
-                  <Menu.Item key="3">
-                    <Link to="/login"></Link>Login
-                  </Menu.Item>
+                  {!loggedUser?.email && (
+                    <Menu.Item key="1" icon={<UserAddOutlined />}>
+                      <Link to="/signup"></Link>Sign up
+                    </Menu.Item>
+                  )}
 
-                  <SubMenu title="Products" key="4">
-                    <Menu.Item key="setting:1">
-                      <Link to="/product"></Link>View Products
+                  {!loggedUser?.email && (
+                    <Menu.Item key="2" icon={<LoginOutlined />}>
+                      <Link to="/login"></Link>Log in
                     </Menu.Item>
-                    <Menu.Item key="setting:2">
-                      <Link to="/product/add"></Link>Promote a new product
-                    </Menu.Item>
-                  </SubMenu>
+                  )}
 
-                  <SubMenu icon={<UserOutlined />} title="Profile" key="5">
-                    <Menu.Item key="setting:1">
-                      <Link to="/profile"></Link>View Profile
-                    </Menu.Item>
-                    <Menu.Item key="setting:2">
-                      <Link to="/profile/edit"></Link>Edit Profile
-                    </Menu.Item>
-                    <Menu.Item key="setting:3" icon={<LogoutOutlined />} onClick={logout}>
+                  {loggedUser?.email && (
+                    <SubMenu icon={<SettingOutlined />} title="Product">
+                      <Menu.ItemGroup title=" ">
+                        <Menu.Item key="setting:1">
+                          <Link to="/product"></Link>Catalogue
+                        </Menu.Item>
+                        <Menu.Item key="setting:2">
+                          <Link to="/product/add"></Link>Rent your product
+                        </Menu.Item>
+                      </Menu.ItemGroup>
+                    </SubMenu>
+                  )}
+
+                  {loggedUser?.email && (
+                    <SubMenu icon={<UserOutlined />} title="Profile">
+                      <Menu.ItemGroup title=" ">
+                        <Menu.Item key="setting:1">
+                          <Link to="/profile"></Link>My Profile
+                        </Menu.Item>
+                        <Menu.Item key="setting:2">
+                          <Link to="/profile/edit"></Link>Edit my profile
+                        </Menu.Item>
+                      </Menu.ItemGroup>
+                    </SubMenu>
+                  )}
+
+                  {loggedUser?.email && (
+                    <SubMenu icon={<BoldOutlined />} title="Booking">
+                      <Menu.ItemGroup title=" ">
+                        <Menu.Item key="setting:1">
+                          <Link to="/bookings"></Link>Booking
+                        </Menu.Item>
+                      </Menu.ItemGroup>
+                    </SubMenu>
+                  )}
+
+                  {loggedUser?.email && (
+                    <Menu.Item key="5" icon={<LogoutOutlined />} onClick={logout}>
                       Log out
                     </Menu.Item>
-                  </SubMenu>
+                  )}
                 </Menu>
               </Header>
               <Content>
@@ -84,69 +118,3 @@ export class NavBar extends Component {
 NavBar.contextType = MyContext
 
 export default withRouter(NavBar)
-
-// export class NavBar extends Component {
-//   state = {
-//     collapsed: false,
-//   }
-
-//   toggle = () => {
-//     this.setState({
-//       collapsed: !this.state.collapsed,
-//     })
-//   }
-//   render() {
-//     return (
-//       <MyContext.Consumer>
-//         {({ loggedUser, logout }) => (
-//           <Layout className="Layout">
-//             <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-//               <div className="logo" />
-//               <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
-//                 <Menu.Item key="1" icon={<UserOutlined />}>
-//                   <Link to="/">Home</Link>
-//                 </Menu.Item>
-//                 <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-//                   <Link to="/about">About us</Link>
-//                 </Menu.Item>
-//                 <Menu.Item key="3" icon={<UploadOutlined />}>
-//                   <Link to="/signup">Sign up</Link>
-//                 </Menu.Item>
-//                 <Menu.Item key="4" icon={<UploadOutlined />}>
-//                   <Link to="/login">Log in</Link>
-//                 </Menu.Item>
-//                 <Menu.Item key="5" icon={<UploadOutlined />}>
-//                   <Link to="/profile">Profile</Link>
-//                 </Menu.Item>
-//                 <Menu.Item key="6" icon={<LogoutOutlined />} onClick={logout}>
-//                   Logout
-//                 </Menu.Item>
-//               </Menu>
-//             </Sider>
-//             <Layout className="site-layout">
-//               <Header className="site-layout-background" style={{ padding: 0 }}>
-//                 {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-//                   className: 'trigger',
-//                   onClick: this.toggle,
-//                 })}
-//               </Header>
-//               <Content
-//                 className="site-layout-background"
-//                 style={{
-//                   margin: '24px 16px',
-//                   padding: 24,
-//                   minHeight: 280,
-//                 }}
-//               >
-//                 <div>{this.props.children}</div>
-//               </Content>
-//               <Footer style={{ textAlign: 'center', fontStyle: 'bold' }}>
-//                 By Francisco at Ironhack |
-//               </Footer>
-//             </Layout>
-//           </Layout>
-//         )}
-//       </MyContext.Consumer>
-//     )
-//   }
-// }

@@ -2,49 +2,71 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from 'antd'
 import { MyContext } from '../context'
-import { DeleteOutlined } from '@ant-design/icons'
+import { DeleteOutlined, EditOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import '../index.css'
+import { Row, Col, Divider } from 'antd'
+
+const style = { background: '#0092ff', padding: '8px 0' }
 
 const { Meta } = Card
 
-const ProductCard = ({ name, _id, description, pricing, owner, imgURL, deleteProduct }) => {
+const ProductCard = ({
+  name,
+  _id,
+  description,
+  pricing,
+  owner,
+  imgURL,
+  deleteProduct,
+  ownerName,
+  ownerEmail,
+  ownerMobile,
+}) => {
   return (
     <MyContext.Consumer>
       {({ loggedUser }) => (
         <>
-          <Card
-            style={{ width: 300 }}
-            cover={<img alt="example" src={imgURL} />}
-            actions={
-              loggedUser?.email === owner?.email && [
-                <DeleteOutlined key="delete" onClick={() => deleteProduct(_id)} />,
-              ]
-            }
-          >
-            <Meta description={pricing} title={name} />
-          </Card>
-          <div className="tags">
-            <Link to={`/product/edit/${_id}`}>Edit </Link>
-
-            <Link to={`/product/${_id}`}>More information</Link>
-          </div>
+          <Row type="flex" justify="left" gutter={[48, 48]}>
+            <Col className="gutter-row" span={6} xs={12}>
+              <Card
+                title={name}
+                size="small"
+                style={{ width: 250, textAlign: 'center' }}
+                cover={
+                  <img
+                    alt="example"
+                    src={imgURL}
+                    style={{
+                      maxWidth: 200,
+                      minWidth: 200,
+                      maxHeight: 170,
+                      minHeight: 170,
+                      margin: 25,
+                    }}
+                  />
+                }
+                actions={[
+                  loggedUser?.email === owner?.email && [
+                    <DeleteOutlined key="delete" onClick={() => deleteProduct(_id)} />,
+                  ],
+                  loggedUser?.email === owner?.email && [
+                    <Link to={`/product/edit/${_id}`}>
+                      <EditOutlined key="edit" />
+                    </Link>,
+                  ],
+                  <Link to={`/product/${_id}`}>
+                    <PlusCircleOutlined />
+                  </Link>,
+                ]}
+              >
+                <Meta description={`$ ${pricing} per week`} />
+              </Card>
+            </Col>
+          </Row>
         </>
       )}
     </MyContext.Consumer>
   )
 }
-ProductCard.contextType = MyContext
+
 export default ProductCard
-
-// {/* <Card
-//   style={{ width: 300 }}
-//   cover={<img src={imgURL} />}
-//   actions={<DeleteOutlined key="delete" onClick={() => deleteProduct(_id)} />}
-// >
-//   {/* <Link to={`/product/${_id}`}>Click for more info</Link> */}
-
-//   {/* loggedUser.email===owner.email?<Link to={`/product/edit/${_id}`}>Edit</Link>:null */}
-//   <br />
-//   <br />
-//   <Meta title={name} description={`By: ${owner && owner.name}  For: ${description} `} />
-// </Card> */}

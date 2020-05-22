@@ -21,11 +21,13 @@ exports.booking = async (req, res) => {
   const booking = await Booking.findById(req.params.id).populate('equipment').populate('client')
   res.status(200).json({ booking })
 }
-// exports.bookingEdit = async (req, res) => {
-//   const { id } = req.params
-//   const booking = await Booking.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
-//   res.status(200).json({ booking })
-// }
+
+exports.bookingEdit = async (req, res) => {
+  console.log(req.params)
+  const { id } = req.params
+  const booking = await Booking.findByIdAndUpdate(id, { $set: { ...req.body } }, { new: true })
+  res.status(200).json({ booking })
+}
 
 // exports.bookingDelete = async (req, res) => {
 //   const booking = await Booking.findByIdAndDelete(req.params.id)

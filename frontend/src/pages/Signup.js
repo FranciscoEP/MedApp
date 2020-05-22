@@ -21,10 +21,9 @@ class Signup extends Component {
   onFinish = async (values) => {
     this.setState({ loading: true })
     const response = await handleAsync(() => AUTH_SERVICE.SIGNUP(values))
-    // console.log(response.message)
+
     if (response.err) {
       this.setState({ msg: 'A user with the given email is already registered' })
-      //this.setState({ msg: 'response.err.message' })
     } else {
       this.setState({ msg: 'response.message' })
       this.props.history.push('/login')
@@ -32,25 +31,13 @@ class Signup extends Component {
     this.setState({ loading: false })
   }
 
-  // this.setState({ loading: true })
-  //   const response = await handleAsync(() => AUTH_SERVICE.SIGNUP(signup))
-  //   console.log(response)
-  //   if (response.err) {
-  //     this.setState({ msg: response.err.message })
-  //   } else {
-  //     this.setState({ msg: response.msg })
-  //   }
-  //   this.setState({ loading: false })
-  //   this.setState({ signup: { name: '', email: '', password: '' } })
-  // }
-
   onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo)
   }
 
   render() {
     return (
-      <>
+      <div className="signup-container">
         <br />
         <h1 style={{ textAlign: 'Center', fontSize: 30 }}>Sign up</h1>
 
@@ -111,19 +98,22 @@ class Signup extends Component {
           </Form.Item>
 
           <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" block htmlType="submit" style={{ backgroundColor: '#faad14' }}>
               Sign up
             </Button>
             <br />
             <br />
-            Already have an account ? <a href="/login">Log in</a>
+            Already have an account ?
+            <a style={{ color: '#faad14' }} href="/login">
+              Log in
+            </a>
           </Form.Item>
         </Form>
         <div className="message-container">
           {!this.state.loading && <p>{this.state.msg}</p>}
           {this.state.loading && <p>Loading...</p>}
         </div>
-      </>
+      </div>
     )
   }
 }

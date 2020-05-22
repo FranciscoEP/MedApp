@@ -6,8 +6,7 @@ const bookingSchema = new Schema(
     client: { type: Schema.Types.ObjectId, ref: 'User' },
     equipment: { type: Schema.Types.ObjectId, ref: 'Product' },
     address: String,
-    initialDate: String,
-    finalDate: String,
+    mobile: String,
   },
   {
     versionKey: false,

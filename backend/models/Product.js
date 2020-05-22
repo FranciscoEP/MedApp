@@ -9,12 +9,18 @@ const productSchema = new Schema(
     warranty: String,
     weight: String,
     pricing: String,
+    ownerEmail: String,
+    ownerMobile: String,
+    ownerName: String,
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
   },
-  { timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 )
 
 module.exports = model('Product', productSchema)

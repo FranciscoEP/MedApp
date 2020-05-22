@@ -2,6 +2,7 @@ import React from 'react'
 import { Form, Input, Button, Upload } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
+import { Row, Col } from 'antd'
 
 function ProfileForm({ onFinish, onFinishFailed, onChange }) {
   const layout = {
@@ -19,36 +20,48 @@ function ProfileForm({ onFinish, onFinishFailed, onChange }) {
   }
 
   return (
-    <Form {...layout} name="basic" onFinish={onFinish}>
-      <Form.Item label="Name" name="name">
-        <Input />
-      </Form.Item>
+    <div className="prof-form">
+      <Form {...layout} name="basic" onFinish={onFinish}>
+        <Form.Item label="Name" name="name">
+          <Input />
+        </Form.Item>
 
-      <Form.Item label="Address" name="address">
-        <Input />
-      </Form.Item>
+        <Form.Item label="Address" name="address">
+          <Input />
+        </Form.Item>
 
-      <Form.Item label="Mobile" name="mobile">
-        <Input />
-      </Form.Item>
+        <Form.Item label="Mobile" name="mobile">
+          <Input />
+        </Form.Item>
 
-      <Form.Item {...tailLayout}>
-        <Upload {...props} onChange={onChange}>
-          <Button>
-            <UploadOutlined /> Click to Upload
+        <Form.Item {...tailLayout}>
+          <Upload {...props} onChange={onChange}>
+            <Button>
+              <UploadOutlined /> Click to Upload
+            </Button>
+          </Upload>
+        </Form.Item>
+
+        <Form.Item {...tailLayout}>
+          <Button
+            type="primary"
+            size="large"
+            htmlType="submit"
+            style={{ backgroundColor: '#faad14', borderColor: '#faad14', margin: 60 }}
+          >
+            Submit
           </Button>
-        </Upload>
-      </Form.Item>
 
-      <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-        <Button type="primary" size="middle">
-          <Link to="/profile">Go back</Link>
-        </Button>
-      </Form.Item>
-    </Form>
+          <Button
+            type="primary"
+            size="large"
+            style={{ backgroundColor: '#faad14', borderColor: '#faad14', margin: 60 }}
+          >
+            <Link to="/profile">Go back</Link>
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
   )
 }
 

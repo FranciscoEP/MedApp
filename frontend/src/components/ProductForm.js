@@ -1,7 +1,7 @@
 import React from 'react'
-
-import { Form, Input, Button, Upload } from 'antd'
-import { UploadOutlined } from '@ant-design/icons'
+import { MyContext } from '../context'
+import { Form, Input, Button, Upload, Tooltip } from 'antd'
+import { UploadOutlined, QuestionCircleOutlined } from '@ant-design/icons'
 const { TextArea } = Input
 
 function ProductForm({ onFinish, onFinishFailed, onChange }) {
@@ -21,19 +21,72 @@ function ProductForm({ onFinish, onFinishFailed, onChange }) {
 
   return (
     <Form {...layout} name="basic" onFinish={onFinish} onFinishFailed={onFinishFailed}>
-      <Form.Item label="Name" name="name">
+      <Form.Item
+        label="Product"
+        name="name"
+        rules={[{ required: true, message: 'Please input your product!' }]}
+      >
         <Input />
       </Form.Item>
 
-      <Form.Item label="Description" name="description">
+      <Form.Item
+        label="Description"
+        name="description"
+        rules={[{ required: true, message: 'Please a full description!' }]}
+      >
         <TextArea rows={4} />
       </Form.Item>
 
-      <Form.Item label="Pricing" name="pricing">
+      <Form.Item
+        name="pricing"
+        placeholder="The price will be set per week. "
+        label={
+          <span>
+            Pricing&nbsp;
+            <Tooltip title="The price will be set in weeks">
+              <QuestionCircleOutlined />
+            </Tooltip>
+          </span>
+        }
+        rules={[
+          {
+            required: true,
+            message: 'Please input the prices for rent',
+            whitespace: true,
+          },
+        ]}
+      >
+        <Input placeholder="Set you price in weeks" />
+      </Form.Item>
+
+      <Form.Item
+        label="Owner's Name"
+        name="ownerName"
+        rules={[{ required: true, message: 'Please input your Address!' }]}
+      >
         <Input />
       </Form.Item>
 
-      <Form.Item {...tailLayout}>
+      <Form.Item
+        label="Email"
+        name="ownerEmail"
+        rules={[{ required: true, message: 'Please input your Email!' }]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Mobile"
+        name="ownerMobile"
+        rules={[{ required: true, message: 'Please input your Mobile!' }]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        {...tailLayout}
+        rules={[{ required: true, message: `Please submit your medical equipment photo!` }]}
+      >
         <Upload {...props} onChange={onChange}>
           <Button>
             <UploadOutlined /> Click to Upload
@@ -42,7 +95,11 @@ function ProductForm({ onFinish, onFinishFailed, onChange }) {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button
+          type="primary"
+          htmlType="submit"
+          style={{ backgroundColor: '#faad14', borderColor: '#faad14' }}
+        >
           Submit
         </Button>
       </Form.Item>

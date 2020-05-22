@@ -15,8 +15,8 @@ export class CreateProduct extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Book your equipment</h1>
+      <div className="addForm">
+        <h1 style={{ color: 'white' }}>Book your equipment</h1>
         <div>
           <BookingForm title="Equipment Information" onFinish={this.onFinish} />
         </div>

@@ -25,15 +25,17 @@ export class CreateProduct extends Component {
 
   onFinish = async (product) => {
     const { imgURL } = this.state
-    await PRODUCT_SERVICE.ADD_PRODUCT({ ...product, imgURL })
+    const response = await PRODUCT_SERVICE.ADD_PRODUCT({ ...product, imgURL })
+    console.log(response)
+
     this.props.history.push('/product')
   }
 
   render() {
     return (
       <div>
-        <h1>Add a new product</h1>
-        <div>
+        <div className="addForm">
+          <h1>Add a new product</h1>
           <ProductForm
             title="Equipment Information"
             onFinish={this.onFinish}

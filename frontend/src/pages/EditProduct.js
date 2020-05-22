@@ -40,7 +40,7 @@ export class EditProduct extends Component {
     return (
       <div>
         <h1>Edit Product</h1>
-        <div>
+        <div className="addForm">
           <ProductForm
             title="Equipment Information"
             onFinish={this.onFinish}

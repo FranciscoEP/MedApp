@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Login from './pages/Login'
 import Home from './pages/Home'
-import About from './pages/About'
 import NavBar from './components/NavBar'
 import Signup from './pages/Signup'
 import Profile from './pages/Profile'
@@ -15,13 +14,13 @@ import EditProduct from './pages/EditProduct'
 import CreateBooking from './pages/CreateBooking'
 import Bookings from './pages/Bookings'
 import DetailBooking from './pages/DetailBooking'
+import EditBooking from './pages/EditBooking'
 
 const AppRouter = () => (
   <Router>
     <NavBar>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/profile" component={Profile} />
@@ -33,6 +32,7 @@ const AppRouter = () => (
         <PrivateRoute exact path="/product/booking/:id" component={CreateBooking} />
         <PrivateRoute exact path="/bookings/" component={Bookings} />
         <PrivateRoute exact path="/bookings/:id" component={DetailBooking} />
+        <PrivateRoute exact path="/bookings/edit/:id" component={EditBooking} />
       </Switch>
     </NavBar>
   </Router>

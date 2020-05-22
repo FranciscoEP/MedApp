@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { booking, bookingAdd, bookings } = require('../controllers/booking')
+const { booking, bookingAdd, bookings, bookingEdit } = require('../controllers/booking')
 
 router.post('/create/:id', bookingAdd)
 
@@ -9,8 +9,8 @@ router.post('/create/:id', bookingAdd)
 router.get('/show', bookings)
 router.get('/:id', booking)
 
-// // //Update
-// router.patch('/edit/:id', bookingEdit)
+// //Update
+router.patch('/edit/:id', bookingEdit)
 
 // //Delete
 // router.delete('/:id', bookingDelete)

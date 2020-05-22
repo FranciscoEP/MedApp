@@ -17,6 +17,9 @@ const BOOKING_SERVICE = {
   SHOW_BOOKING: async (id) => {
     return await service.get(`/booking/${id}`)
   },
+  EDIT_BOOKING: async (id) => {
+    return await service.patch(`/booking/edit/${id}`)
+  },
 }
 
 export default BOOKING_SERVICE

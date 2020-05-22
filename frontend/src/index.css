@@ -1,10 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;1,400&family=Roboto&display=swap');
+
 body {
   margin: 0 !important;
   padding: 0 !important;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-
 }
 
 .layout-container {
@@ -12,21 +10,40 @@ body {
   padding: 0;
 }
 
-
 .background-img {
   background-image: url('./assets/hero.png');
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 700px;
+}
 
+.signup-container h1 {
+  color: #871400;
+}
+
+.background-img h2 {
+  color: #e1e8ee;
+  font-size: 2em;
+}
+
+.background-img h3 {
+  color: #e1e8ee;
+  font-size: 1.5em;
+}
+
+
+
+
+#home-head {
+  color: #e1e8ee;
+  font-size: 4rem;
+  margin-bottom: 100px;
 }
 
 .site-layout-content {
-  background: #fff;
-
-  min-height: 540px;
+  background-color: '#45A0A1';
+  min-height: 700px;
 }
-
 
 .ant-layout-header {
   display: flex;
@@ -41,7 +58,6 @@ body {
   float: left;
 }
 
-
 .login-form {
   margin-top: 10%;
 }
@@ -52,24 +68,23 @@ body {
 }
 
 .message-container p {
-  color: red;
+  color: #FFF;
 }
 
 .user-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
+
 }
 
 .product-card {
   display: flex;
   flex-wrap: wrap;
+  padding: 20px;
+  justify-content: space-around;
+  background-color: #45A0A1;
+  min-height: 100vh;
 }
-
-.product-card img {
-  width: 200px;
-}
-
 
 
 .container {
@@ -77,6 +92,8 @@ body {
   margin: 0 auto;
   padding: 15px;
   display: flex;
+  background-color: #45A0A1;
+  min-height: 100vh;
 }
 
 .left-column {
@@ -103,13 +120,13 @@ body {
 }
 
 .product-description {
-  border-bottom: 1px solid #E1E8EE;
+  border-bottom: 1px solid #e1e8ee;
   margin-bottom: 20px;
 }
 
 .product-description span {
   font-size: 12px;
-  color: #358ED7;
+  color: #e1e8ee;
   letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
@@ -118,14 +135,14 @@ body {
 .product-description h1 {
   font-weight: 300;
   font-size: 52px;
-  color: #43484D;
+  color: #FFF;
   letter-spacing: -2px;
 }
 
 .product-description p {
   font-size: 16px;
   font-weight: 300;
-  color: #86939E;
+  color: #FFF;
   line-height: 24px;
 }
 
@@ -137,19 +154,26 @@ body {
 .product-price span {
   font-size: 26px;
   font-weight: 300;
-  color: #43474D;
+  color: #43474d;
   margin-right: 20px;
 }
 
 .cart-btn {
   display: inline-block;
-  background-color: #7DC855;
+  background-color: #7dc855;
   border-radius: 6px;
   font-size: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
   padding: 12px 30px;
-  transition: all .5s;
+  transition: all 0.5s;
+}
+
+.site-button-ghost-wrapper {
+  display: flex;
+  justify-content: center;
+
+
 }
 
 .cart-btn:hover {
@@ -165,4 +189,73 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+
+.signup-container {
+  background-color: #45A0A1;
+  height: 100vh;
+}
+
+.signup-container h1 {
+  color: #00474f;
+  font-size: 50px;
+}
+
+.login-bcg {
+  background-color: #45A0A1;
+  height: 100vh;
+  margin-bottom: 10px;
+}
+
+.login-bcg h1 {
+  color: #00474f;
+}
+
+.profile-container {
+  background-color: #45A0A1;
+  height: 100vh;
+}
+
+.profile-container h1 {
+  font-size: 3.5em;
+  color: #820014;
+
+}
+
+.ant-card-meta-title {
+  color: #FFF !important;
+}
+
+.text {
+  color: "FFF";
+  border: 2px solid #FFF;
+  text-align: center;
+  padding: 5px 5px;
+
+}
+
+.prof-form {
+  background-color: #45A0A1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.addForm {
+  background-color: #45A0A1;
+  height: 100vh;
+}
+
+.addForm h1 {
+  text-align: center;
+  font-size: 3em;
+  color: "#FFF"
+}
+
+.button-bcg {
+  background-color: '#faad14';
+  border-color: '#faad14'
 }

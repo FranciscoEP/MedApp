@@ -1,6 +1,7 @@
 const Product = require('../models/Product')
 
 exports.addProduct = async (req, res) => {
+  console.log(req.body)
   const products = await Product.create({ owner: req.user._id, ...req.body })
   res.status(201).json({ products })
 }

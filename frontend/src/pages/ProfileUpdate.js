@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PROFILE_SERVICE from '../services/profile'
 import ProfileForm from '../components/ProfileForm'
+import { MyContext } from '../context'
 
 import '../index.css'
 
@@ -32,7 +33,8 @@ export class ProfileUpdate extends Component {
 
   onFinish = async (profile) => {
     const { imgURL } = this.state
-    await PROFILE_SERVICE.PROFILE_UPDATE({ ...profile, imgURL })
+    const response = await PROFILE_SERVICE.PROFILE_UPDATE({ ...profile, imgURL })
+    this.context.logUser(response.data.profile)
     this.props.history.push('/profile')
   }
 
@@ -50,7 +52,7 @@ export class ProfileUpdate extends Component {
     )
   }
 }
-
+ProfileUpdate.contextType = MyContext
 export default ProfileUpdate
 
 //
