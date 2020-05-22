@@ -29,7 +29,7 @@ exports.bookingEdit = async (req, res) => {
   res.status(200).json({ booking })
 }
 
-// exports.bookingDelete = async (req, res) => {
-//   const booking = await Booking.findByIdAndDelete(req.params.id)
-//   res.status(200).json({ booking })
-// }
+exports.bookingDelete = async (req, res) => {
+  const booking = await Booking.findByIdAndDelete(req.params.id)
+  res.status(200).json({ booking })
+}

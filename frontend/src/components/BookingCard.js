@@ -4,10 +4,10 @@ import { MyContext } from '../context'
 import { Link } from 'react-router-dom'
 import '../index.css'
 import { Row, Col, Divider } from 'antd'
-
+import { DeleteOutlined } from '@ant-design/icons'
 const style = { background: '#0092ff', padding: '8px 0' }
 
-const BookingCard = ({ address, mobile, _id }) => {
+const BookingCard = ({ address, mobile, _id, deleteBooking }) => {
   return (
     <MyContext.Consumer>
       {({ loggedUser }) => (
@@ -18,11 +18,12 @@ const BookingCard = ({ address, mobile, _id }) => {
                 <Card
                   title="Reservation"
                   style={{ width: 300 }}
-                  extra={<Link to={`/bookings/${_id}`}>More</Link>}
+                  extra={<DeleteOutlined key="delete" onClick={() => deleteBooking(_id)} />}
                 >
-                  <Link to={`/bookings/edit/${_id}`}>More</Link>
-                  <p>{address}</p>
-                  <p>{mobile}</p>
+                  {/* <Link to={`/bookings/edit/${_id}`}>More</Link> */}
+                  {<Link to={`/bookings/${_id}`}>View More</Link>}
+                  <p>{`Address: ${address}`}</p>
+                  <p>{`Mobile:  ${mobile}`}</p>
                 </Card>
               </Col>
             </Row>

@@ -25,21 +25,6 @@ exports.login = (req, res, next) => {
   })(req, res, next)
 }
 
-/*(req,res)=>{
-   (req, res, next) => {
-  passport.authenticate('local', (err, user) => {
-    if (!user)
-      return res
-        .status(404)
-        .send({ message: 'This user does not exist, or the password is incorrect.' })
-    req.logIn(user, (err) => {
-      if (err) return res.status(500).send({ message: err.message })
-      res.status(200).send(user)
-    })
-  })(req, res, next)
-})
-}*/
-
 exports.logout = (req, res) => {
   req.logout()
   res.status(200).json({ msg: 'logged out' })

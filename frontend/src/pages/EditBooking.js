@@ -8,18 +8,17 @@ export class EditBooking extends Component {
 
   componentDidMount = async () => {
     const response = await BOOKING_SERVICE.SHOW_BOOKING(this.props.match.params.id)
-    console.log(response)
+
     const booking = response.data.booking
-    console.log(booking)
+
     this.setState({ booking })
   }
 
   onFinish = async (booking) => {
-    const bookingId = this.props.match.params.id
-    console.log(bookingId)
-    const response = await BOOKING_SERVICE.EDIT_BOOKING(bookingId, { ...booking })
-    console.log(response)
-    console.log(booking)
+    const id = this.props.match.params.id
+
+    const response = await BOOKING_SERVICE.EDIT_BOOKING(id, { ...booking })
+
     this.props.history.push('/bookings')
   }
 

@@ -53,7 +53,7 @@ body {
 #components-layout-demo-top .logo {
   width: 120px;
   height: 31px;
-  background: rgba(255, 255, 255, 0.2);
+  background: url('./assets/helping.png');
   margin: 16px 24px 16px 0;
   float: left;
 }
@@ -258,4 +258,20 @@ body {
 .button-bcg {
   background-color: '#faad14';
   border-color: '#faad14'
+}
+
+.img-cont img {
+  width: 420px;
+  height: 100px;
+
+}
+
+.img-cont {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  float: right;
+  text-align: center;
+
+
 }

@@ -16,19 +16,19 @@ class Bookings extends Component {
     })
   }
 
-  // deleteProduct = async (id) => {
-  //   await PRODUCT_SERVICE.DELETE_PRODUCT(id)
-  //   const { products } = this.state
-  //   const newArray = products.filter((product) => product._id !== id)
-  //   this.setState({ products: newArray })
-  // }
+  deleteBooking = async (id) => {
+    await BOOKING_SERVICE.DELETE_BOOKING(id)
+    const { bookings } = this.state
+    const newArray = bookings.filter((booking) => booking._id !== id)
+    this.setState({ bookings: newArray })
+  }
 
   render() {
     return (
       <>
         <div className="product-card">
           {this.state.bookings.map((booking) => (
-            <BookingCard {...booking} key={booking._id} />
+            <BookingCard deleteBooking={this.deleteBooking} {...booking} key={booking._id} />
           ))}
         </div>
       </>

@@ -11,17 +11,16 @@ class Home extends Component {
   render() {
     return (
       <div className="background-img">
+        <div className="img-cont"></div>
         <div>
           <Title strong style={{ color: '#e6fffb', fontSize: 100, padding: 25 }}>
             Struggle to find medical equipment?
           </Title>
+
           <Row justify="left">
             <Col span={16}>
               <div style={{ paddingLeft: 20 }}>
                 <h2>Join our community and earn by helping others</h2>
-                <br />
-                <br />
-
                 <h3>
                   <strong>Loan</strong> and
                   <strong> rent</strong> Medical Equipment easy and fast.

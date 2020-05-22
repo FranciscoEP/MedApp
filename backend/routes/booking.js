@@ -1,7 +1,13 @@
 const express = require('express')
 const router = express.Router()
 
-const { booking, bookingAdd, bookings, bookingEdit } = require('../controllers/booking')
+const {
+  booking,
+  bookingAdd,
+  bookings,
+  bookingEdit,
+  bookingDelete,
+} = require('../controllers/booking')
 
 router.post('/create/:id', bookingAdd)
 
@@ -13,6 +19,6 @@ router.get('/:id', booking)
 router.patch('/edit/:id', bookingEdit)
 
 // //Delete
-// router.delete('/:id', bookingDelete)
+router.delete('/:id', bookingDelete)
 
 module.exports = router

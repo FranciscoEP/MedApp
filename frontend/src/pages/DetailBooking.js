@@ -37,7 +37,12 @@ class DetailBooking extends Component {
 
             <br />
           </div>
-          <Button type="primary" size="middle">
+          <Button
+            type="primary"
+            size="middle"
+            block
+            style={{ backgroundColor: '#faad14', borderColor: '#faad14' }}
+          >
             <Link to="/bookings">Back</Link>
           </Button>
         </div>
