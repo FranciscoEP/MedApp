@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:3000/'
+const baseURL = 'https://immense-journey-87400.herokuapp.com/'
 
 const service = axios.create({
   baseURL,
