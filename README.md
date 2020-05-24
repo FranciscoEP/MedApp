@@ -6,8 +6,6 @@ Community created for people who needs rental medical equipment and people who l
 
 ### How to use
 
-![photo](images/Markdom.png)
-
 Rental.
 
 1. Sign up.

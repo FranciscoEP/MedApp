@@ -40,7 +40,6 @@ class DetailBooking extends Component {
           <Button
             type="primary"
             size="middle"
-            block
             style={{ backgroundColor: '#faad14', borderColor: '#faad14' }}
           >
             <Link to="/bookings">Back</Link>

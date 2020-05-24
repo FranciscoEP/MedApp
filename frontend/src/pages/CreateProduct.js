@@ -26,7 +26,6 @@ export class CreateProduct extends Component {
   onFinish = async (product) => {
     const { imgURL } = this.state
     const response = await PRODUCT_SERVICE.ADD_PRODUCT({ ...product, imgURL })
-    console.log(response)
 
     this.props.history.push('/product')
   }
