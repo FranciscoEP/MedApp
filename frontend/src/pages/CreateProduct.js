@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ProductForm from '../components/ProductForm'
 import PRODUCT_SERVICE from '../services/product'
+
 import '../index.css'
 
 export class CreateProduct extends Component {
@@ -39,7 +40,6 @@ export class CreateProduct extends Component {
           <ProductForm
             title="Equipment Information"
             onFinish={this.onFinish}
-            onFinishFailed={this.onFinishFailed}
             setImgURL={this.setImgURL}
             img={this.state.ImgURL}
             onChange={this.onChange}

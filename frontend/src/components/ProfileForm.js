@@ -1,10 +1,9 @@
 import React from 'react'
-import { Form, Input, Button, Upload } from 'antd'
+import { Form, Input, Button, Upload, InputNumber } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
-import { Row, Col } from 'antd'
 
-function ProfileForm({ onFinish, onFinishFailed, onChange }) {
+function ProfileForm({ onFinish, onChange }) {
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 8 },
@@ -16,7 +15,7 @@ function ProfileForm({ onFinish, onFinishFailed, onChange }) {
 
   const props = {
     name: 'imageURL',
-    action: 'https://immense-journey-87400.herokuapp.com/product/upload',
+    action: 'http://localhost:3000/product/upload',
   }
 
   return (
@@ -30,8 +29,12 @@ function ProfileForm({ onFinish, onFinishFailed, onChange }) {
           <Input />
         </Form.Item>
 
-        <Form.Item label="Mobile" name="mobile">
+        <Form.Item label="Favorite Quote" name="catchPhrase">
           <Input />
+        </Form.Item>
+
+        <Form.Item label="Mobile" name="mobile">
+          <InputNumber style={{ width: 320 }} />
         </Form.Item>
 
         <Form.Item {...tailLayout}>

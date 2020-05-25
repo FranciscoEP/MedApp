@@ -4,24 +4,11 @@ import { Card } from 'antd'
 import { MyContext } from '../context'
 import { DeleteOutlined, EditOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import '../index.css'
-import { Row, Col, Divider } from 'antd'
-
-const style = { background: '#0092ff', padding: '8px 0' }
+import { Row, Col } from 'antd'
 
 const { Meta } = Card
 
-const ProductCard = ({
-  name,
-  _id,
-  description,
-  pricing,
-  owner,
-  imgURL,
-  deleteProduct,
-  ownerName,
-  ownerEmail,
-  ownerMobile,
-}) => {
+const ProductCard = ({ name, _id, description, pricing, owner, imgURL, deleteProduct, plan }) => {
   return (
     <MyContext.Consumer>
       {({ loggedUser }) => (
@@ -59,7 +46,7 @@ const ProductCard = ({
                   </Link>,
                 ]}
               >
-                <Meta description={`$ ${pricing} per week`} />
+                <Meta description={`$ ${pricing} ${plan}`} />
               </Card>
             </Col>
           </Row>

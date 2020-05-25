@@ -3,7 +3,7 @@ import '../index.css'
 import { Button } from 'antd'
 import { Link } from 'react-router-dom'
 import { Typography } from 'antd'
-import { Row, Col, Divider } from 'antd'
+import { Row, Col } from 'antd'
 
 const { Title } = Typography
 

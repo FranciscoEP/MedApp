@@ -4,14 +4,9 @@ const productSchema = new Schema(
   {
     name: String,
     imgURL: String,
-    description: String,
-    dutyUse: String,
-    warranty: String,
-    weight: String,
+    description: { type: String, max: 200 },
+    plan: { type: String, enum: ['per day', 'per week', 'per month'] },
     pricing: String,
-    ownerEmail: String,
-    ownerMobile: String,
-    ownerName: String,
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'User',

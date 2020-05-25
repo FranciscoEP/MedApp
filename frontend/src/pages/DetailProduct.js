@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PRODUCT_SERVICE from '../services/product'
 import '../index.css'
-import { MyContext } from '../context'
 import { Button } from 'antd'
 
 class DetailProduct extends Component {
@@ -16,41 +15,53 @@ class DetailProduct extends Component {
 
   render() {
     return (
-      <MyContext.Consumer>
-        {({ loggedUser }) => (
-          <>
-            <main className="container">
-              <div className="left-column">
-                <img className="active" src={this.state.product.imgURL} alt=",mnb" />
+      <>
+        <main className="container">
+          <div className="wrapper">
+            <div className="box">
+              <div>
+                <img className="image" src={this.state.product.imgURL} alt="" />
               </div>
-              <div className="right-column">
-                <div className="product-description">
-                  <span></span>
-                  <h1>{this.state.product.name}</h1>
-                  <p>{`Description: ${this.state.product.description}`}</p>
-                  <p>{`Owner: ${this.state.product.ownerName}`}</p>
-                  <p>{`Email: ${this.state.product.ownerEmail}`}</p>
+              <div className="text">
+                <h1>{this.state.product.name}</h1>
+                <h5>{this.state.product.owner?.name}</h5>
+                <hr></hr>
+                <p>{this.state.product.description}</p>
+                <span>
+                  {this.state.product.pricing}
+                  <sup>$</sup>
+                </span>
+                <div className="buttons">
+                  <Button
+                    type="primary"
+                    size="large"
+                    block
+                    style={{
+                      backgroundColor: '#faad14',
+                      borderColor: '#faad14',
+                      marginBottom: 10,
+                    }}
+                  >
+                    <Link to={`/booking/add/${this.props.match.params.id}`}>Order</Link>
+                  </Button>
+                  <Button
+                    type="primary"
+                    size="large"
+                    block
+                    style={{
+                      backgroundColor: '#faad14',
+                      borderColor: '#faad14',
+                      marginTop: 10,
+                    }}
+                  >
+                    <Link to={`/product`}>Go Back</Link>
+                  </Button>
                 </div>
-                <div className="product-price">
-                  <span>
-                    <p>{`Price: $ ${this.state.product.pricing} per week `}</p>
-                  </span>
-                  <br />
-                </div>
-
-                <Button
-                  type="primary"
-                  size="middle"
-                  block
-                  style={{ backgroundColor: '#faad14', borderColor: '#faad14' }}
-                >
-                  <Link to={`/product/booking/${this.props.match.params.id}`}>Order</Link>
-                </Button>
               </div>
-            </main>
-          </>
-        )}
-      </MyContext.Consumer>
+            </div>
+          </div>
+        </main>
+      </>
     )
   }
 }

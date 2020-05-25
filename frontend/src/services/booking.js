@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://immense-journey-87400.herokuapp.com/'
+const baseURL = 'http://localhost:3000'
 
 const service = axios.create({
   baseURL,
@@ -22,6 +22,9 @@ const BOOKING_SERVICE = {
   },
   DELETE_BOOKING: async (id) => {
     return await service.delete(`/booking/${id}`)
+  },
+  OWNER_BOOKING: async (id) => {
+    return await service.get(`/owner`)
   },
 }
 

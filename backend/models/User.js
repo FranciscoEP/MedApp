@@ -7,9 +7,8 @@ const userSchema = new Schema(
     email: String,
     password: String,
     address: String,
-    mobile: String,
-    catchPhrase: String,
-
+    mobile: Number,
+    catchPhrase: { type: String, max: 200 },
     imgURL: String,
   },
   { timestamps: true }

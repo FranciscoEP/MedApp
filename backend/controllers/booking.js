@@ -1,4 +1,5 @@
 const Booking = require('../models/Booking')
+const Product = require('../models/Product')
 
 exports.bookingAdd = async (req, res) => {
   const data = req.body
@@ -18,7 +19,7 @@ exports.bookings = async (req, res) => {
 }
 
 exports.booking = async (req, res) => {
-  const booking = await Booking.findById(req.params.id).populate('equipment').populate('client')
+  const booking = await Booking.findById(req.params.id).populate('equipment')
   res.status(200).json({ booking })
 }
 

@@ -10,9 +10,11 @@ class DetailBooking extends Component {
 
   componentDidMount = async () => {
     const { data } = await BOOKING_SERVICE.SHOW_BOOKING(this.props.match.params.id)
-
+    console.log(data)
     const { equipment } = data.booking
-    console.log(this.equipment)
+    console.log(equipment.owner)
+    console.log(equipment.owner.name)
+
     this.setState({ equipment })
   }
 
@@ -33,6 +35,13 @@ class DetailBooking extends Component {
           <div className="product-price">
             <span>
               <p>{this.state.equipment.pricing}$</p>
+              {!this.state.equipment.owner?.name ? (
+                <>Loading...</>
+              ) : (
+                <>
+                  <p>{this.state.equipment.owner?.name}</p>
+                </>
+              )}
             </span>
 
             <br />

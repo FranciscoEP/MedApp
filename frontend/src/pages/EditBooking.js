@@ -16,8 +16,7 @@ export class EditBooking extends Component {
 
   onFinish = async (booking) => {
     const id = this.props.match.params.id
-
-    const response = await BOOKING_SERVICE.EDIT_BOOKING(id, { ...booking })
+    await BOOKING_SERVICE.EDIT_BOOKING(id, { ...booking })
 
     this.props.history.push('/bookings')
   }

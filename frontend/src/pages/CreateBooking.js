@@ -8,8 +8,9 @@ export class CreateProduct extends Component {
 
   onFinish = async (values) => {
     const idProd = this.props.match.params.id
-    const response = await BOOKING_SERVICE.ADD_BOOKING(values, idProd)
-    console.log(response)
+
+    const res = await BOOKING_SERVICE.ADD_BOOKING(values, idProd)
+    console.log(res)
     this.props.history.push('/profile')
   }
 

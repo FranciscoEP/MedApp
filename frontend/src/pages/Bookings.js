@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import BOOKING_SERVICE from '../services/booking'
+
 import BookingCard from '../components/BookingCard'
 import '../index.css'
 
@@ -9,12 +10,14 @@ class Bookings extends Component {
   }
   componentDidMount = async () => {
     const response = await BOOKING_SERVICE.SHOW_BOOKINGS({})
+    console.log(response)
     const bookings = response.data.bookings
+    console.log(bookings)
 
     this.setState({
       bookings,
     })
-  }
+  } //
 
   deleteBooking = async (id) => {
     await BOOKING_SERVICE.DELETE_BOOKING(id)
