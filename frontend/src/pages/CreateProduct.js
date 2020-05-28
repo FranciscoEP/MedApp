@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ProductForm from '../components/ProductForm'
 import PRODUCT_SERVICE from '../services/product'
-
+import { message } from 'antd'
 import '../index.css'
 
 export class CreateProduct extends Component {
@@ -26,10 +26,13 @@ export class CreateProduct extends Component {
 
   onFinish = async (product) => {
     const { imgURL } = this.state
-    const response = await PRODUCT_SERVICE.ADD_PRODUCT({ ...product, imgURL })
-    console.log(response)
-
+    await PRODUCT_SERVICE.ADD_PRODUCT({ ...product, imgURL })
+    this.addProdSuccess()
     this.props.history.push('/product')
+  }
+
+  addProdSuccess = () => {
+    message.success('Equipment created')
   }
 
   render() {
@@ -43,6 +46,7 @@ export class CreateProduct extends Component {
             setImgURL={this.setImgURL}
             img={this.state.ImgURL}
             onChange={this.onChange}
+            disableUpdate={this.disableUpdate}
           />
         </div>
       </div>

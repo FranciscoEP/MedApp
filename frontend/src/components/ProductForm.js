@@ -1,12 +1,11 @@
 import React from 'react'
-
 import { Link } from 'react-router-dom'
 import { Form, Input, Button, Upload, Tooltip, Select } from 'antd'
 import { UploadOutlined, QuestionCircleOutlined } from '@ant-design/icons'
 const { TextArea } = Input
 const { Option } = Select
 
-function ProductForm({ onFinish, onChange }) {
+function ProductForm({ onFinish, onChange, disableUpdate }) {
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 8 },
@@ -34,7 +33,7 @@ function ProductForm({ onFinish, onChange }) {
       <Form.Item
         label="Description"
         name="description"
-        rules={[{ required: true, message: 'Please a full description!' }]}
+        rules={[{ required: true, message: 'Input a description 250 characters max!', max: 250 }]}
       >
         <TextArea rows={4} />
       </Form.Item>
@@ -57,7 +56,7 @@ function ProductForm({ onFinish, onChange }) {
           },
         ]}
       >
-        <Input />
+        <Input type="number" />
       </Form.Item>
 
       <Form.Item
@@ -75,11 +74,18 @@ function ProductForm({ onFinish, onChange }) {
 
       <Form.Item
         {...tailLayout}
-        rules={[{ required: true, message: `Please submit your medical equipment photo!` }]}
+        rules={[
+          {
+            required: true,
+            message: `Please submit your medical equipment photo!`,
+            whitespace: true,
+          },
+        ]}
       >
         <Upload {...props} onChange={onChange}>
           <Button>
-            <UploadOutlined /> Click to Upload
+            <UploadOutlined />
+            Click to Upload
           </Button>
         </Upload>
       </Form.Item>
@@ -92,6 +98,7 @@ function ProductForm({ onFinish, onChange }) {
         >
           Submit
         </Button>
+
         <Button
           type="primary"
           size="large"

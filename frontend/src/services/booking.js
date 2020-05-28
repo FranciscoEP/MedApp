@@ -23,8 +23,12 @@ const BOOKING_SERVICE = {
   DELETE_BOOKING: async (id) => {
     return await service.delete(`/booking/${id}`)
   },
-  OWNER_BOOKING: async (id) => {
-    return await service.get(`/owner`)
+  GET_BOOKING: async (id) => {
+    return await service.patch(`/booking/active/${id}`)
+  },
+
+  SET_BOOKING: async (id) => {
+    return await service.patch(`/booking/sective/${id}`)
   },
 }
 

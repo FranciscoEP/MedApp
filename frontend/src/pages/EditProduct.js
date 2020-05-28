@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ProductForm from '../components/ProductForm'
 import PRODUCT_SERVICE from '../services/product'
+import { message } from 'antd'
 import '../index.css'
 
 export class EditProduct extends Component {
@@ -25,15 +26,20 @@ export class EditProduct extends Component {
 
   componentDidMount = async () => {
     const response = await PRODUCT_SERVICE.SHOW_PRODUCT(this.props.match.params.id)
-    const product = response.data.product
+    const { product } = response.data
     this.setState({ product })
   }
 
   onFinish = async (product) => {
     const { imgURL } = this.state
-    const prodId = this.props.match.params.id
-    await PRODUCT_SERVICE.EDIT_PRODUCT(prodId, { ...product, imgURL })
+    const { id } = this.props.match.params
+    await PRODUCT_SERVICE.EDIT_PRODUCT(id, { ...product, imgURL })
+    this.editSuccess()
     this.props.history.push('/product')
+  }
+
+  editSuccess = () => {
+    message.success(`You're equipment was updated successfully`)
   }
 
   render() {
