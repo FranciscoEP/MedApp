@@ -15,7 +15,7 @@ function ProfileForm({ onFinish, onChange }) {
 
   const props = {
     name: 'imageURL',
-    action: 'https://med-app-iota.now.sh/product/upload',
+    action: 'https://immense-journey-87400.herokuapp.com/product/upload',
   }
 
   return (

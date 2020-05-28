@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://med-app-iota.now.sh'
+const baseURL = 'https://immense-journey-87400.herokuapp.com'
 const service = axios.create({
   baseURL,
   withCredentials: true,
