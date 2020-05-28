@@ -28,7 +28,7 @@ const sessionconfig = {
 }
 
 mongoose
-  .connect('mongodb://localhost/holi', dbconfig)
+  .connect(process.env.DB, dbconfig)
   .then(() => console.log('Connected to Mongo!'))
   .catch((err) => console.error('Error connecting to Mongo', err))
 

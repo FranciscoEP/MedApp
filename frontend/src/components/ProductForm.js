@@ -17,7 +17,7 @@ function ProductForm({ onFinish, onChange, disableUpdate }) {
 
   const props = {
     name: 'imageURL',
-    action: 'http://localhost:3000/product/upload',
+    action: 'https://med-app-iota.now.sh/product/upload',
   }
 
   return (
