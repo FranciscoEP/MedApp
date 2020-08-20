@@ -15,7 +15,7 @@ function ProfileForm({ onFinish, onChange }) {
 
   const props = {
     name: 'imageURL',
-    action: 'https://immense-journey-87400.herokuapp.com/product/upload/',
+    action: 'https://immense-journey-87400.herokuapp.com/product/upload',
   }
 
   return (
