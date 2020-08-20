@@ -13,24 +13,6 @@ function ProfileForm({ onFinish, onChange }) {
     wrapperCol: { offset: 8, span: 8 },
   }
 
-  const cakes = (recipe, available) => {
-    let result = 0
-    for (let i in recipe) {
-      if (i in available) {
-        avg = Math.floor(available[i] / recipe[i])
-        if (result == 0) {
-          result = avg
-        } else {
-          result = Math.min(result, avg)
-        }
-      } else {
-        result = 0
-        break
-      }
-    }
-    return result
-  }
-
   const props = {
     name: 'imageURL',
     action: 'https://immense-journey-87400.herokuapp.com/product/upload/',
