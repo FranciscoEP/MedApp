@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 import { Button } from 'antd'
 import { Link } from 'react-router-dom'
-import { Card, Descriptions } from 'antd'
+import { Card } from 'antd'
 import { MyContext } from '../context'
-import PROFILE_SERVICE from '../services/profile'
+import '../index.css'
 
-const { Meta } = Card
+const gridStyle = {
+  width: '100%',
+  height: 5,
+  textAlign: 'center',
+  backgroundColor: '#00474f',
+  fontSize: 10,
+  border: 'none',
+}
 
 export default class Profile extends Component {
   state: {
@@ -26,39 +33,43 @@ export default class Profile extends Component {
                   <Card
                     hoverable
                     style={{
-                      maxWidth: 200,
-                      minWidth: 200,
-                      minHeight: 200,
-                      minWidth: 200,
-                      backgroundColor: '#00474f',
+                      maxWidth: 250,
+                      minWidth: 250,
+                      minHeight: 100,
+                      maxHeight: 100,
                       border: 'none',
                       color: '#FFF',
                     }}
-                    cover={<img alt="example" src={this.context.loggedUser.imgURL} />}
-                  ></Card>
-                  <div style={{ textAlign: 'center', fontSize: '2em' }}>
-                    <Descriptions title="Information">
-                      <Descriptions.Item label="Email">
-                        {this.context.loggedUser.email}
-                      </Descriptions.Item>
-                      <Descriptions.Item label="Mobile">
-                        {this.context.loggedUser.address}
-                      </Descriptions.Item>
-                      <Descriptions.Item label="Address">
-                        {this.context.loggedUser.mobile}
-                      </Descriptions.Item>
-                    </Descriptions>
-                  </div>
-                  <div>
-                    <Button
-                      type="primary"
-                      size="middle"
-                      block
-                      style={{ backgroundColor: '#faad14', borderColor: '#faad14' }}
-                    >
-                      <Link to="/profile/edit">Edit profile</Link>
-                    </Button>
-                  </div>
+                    cover={
+                      <img
+                        alt="example"
+                        src={this.context.loggedUser.imgURL}
+                        style={{ minWidth: 250, maxWidth: 250, minHeight: 280, maxHeight: 280 }}
+                      />
+                    }
+                  >
+                    <Card.Grid style={gridStyle}>
+                      {`Email: ${this.context.loggedUser.email}`}
+                    </Card.Grid>
+                    <Card.Grid
+                      style={gridStyle}
+                    >{`Mobile: ${this.context.loggedUser.mobile}`}</Card.Grid>
+                    <Card.Grid
+                      style={gridStyle}
+                    >{`Address: ${this.context.loggedUser.address}`}</Card.Grid>
+                    <p>{this.context.loggedUser.catchPhrase}</p>
+                    <div>
+                      <Button
+                        position="absolute"
+                        type="primary"
+                        size="middle"
+                        block
+                        style={{ backgroundColor: '#faad14', borderColor: '#faad14' }}
+                      >
+                        <Link to="/profile/edit">Edit profile</Link>
+                      </Button>
+                    </div>
+                  </Card>
                 </div>
               </>
             </>

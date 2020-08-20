@@ -2,15 +2,21 @@ import React, { Component } from 'react'
 import BookingForm from '../components/BookingForm'
 import BOOKING_SERVICE from '../services/booking'
 import '../index.css'
+import { message } from 'antd'
 
-export class CreateProduct extends Component {
+export class CreateBooking extends Component {
   state = {}
 
   onFinish = async (values) => {
-    const idProd = this.props.match.params.id
-    const response = await BOOKING_SERVICE.ADD_BOOKING(values, idProd)
-    console.log(response)
+    const { id } = this.props.match.params
+    await BOOKING_SERVICE.ADD_BOOKING(values, id)
+    await BOOKING_SERVICE.GET_BOOKING(id)
+    this.addBookingSuccess()
     this.props.history.push('/profile')
+  }
+
+  addBookingSuccess = () => {
+    message.success('Your booking was created successfully')
   }
 
   render() {
@@ -25,4 +31,4 @@ export class CreateProduct extends Component {
   }
 }
 
-export default CreateProduct
+export default CreateBooking

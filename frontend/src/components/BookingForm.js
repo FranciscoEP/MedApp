@@ -51,7 +51,7 @@ function BookingForm({ onFinish }) {
                 size="middle"
                 style={{ backgroundColor: '#faad14', borderColor: '#faad14', margin: 60 }}
               >
-                <Link to="/bookings">Go back</Link>
+                <Link to="/product">Go back</Link>
               </Button>
             </Form.Item>
           </div>

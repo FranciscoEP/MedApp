@@ -1,10 +1,11 @@
 import React from 'react'
-import { MyContext } from '../context'
-import { Form, Input, Button, Upload, Tooltip } from 'antd'
+import { Link } from 'react-router-dom'
+import { Form, Input, Button, Upload, Tooltip, Select } from 'antd'
 import { UploadOutlined, QuestionCircleOutlined } from '@ant-design/icons'
 const { TextArea } = Input
+const { Option } = Select
 
-function ProductForm({ onFinish, onFinishFailed, onChange }) {
+function ProductForm({ onFinish, onChange, disableUpdate }) {
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 8 },
@@ -20,7 +21,7 @@ function ProductForm({ onFinish, onFinishFailed, onChange }) {
   }
 
   return (
-    <Form {...layout} name="basic" onFinish={onFinish} onFinishFailed={onFinishFailed}>
+    <Form {...layout} name="basic" onFinish={onFinish}>
       <Form.Item
         label="Product"
         name="name"
@@ -32,18 +33,17 @@ function ProductForm({ onFinish, onFinishFailed, onChange }) {
       <Form.Item
         label="Description"
         name="description"
-        rules={[{ required: true, message: 'Please a full description!' }]}
+        rules={[{ required: true, message: 'Input a description 250 characters max!', max: 250 }]}
       >
         <TextArea rows={4} />
       </Form.Item>
 
       <Form.Item
         name="pricing"
-        placeholder="The price will be set per week. "
         label={
           <span>
-            Pricing&nbsp;
-            <Tooltip title="The price will be set in weeks">
+            Pricing
+            <Tooltip title="Be reasonable you're not pretending to be rich from this app">
               <QuestionCircleOutlined />
             </Tooltip>
           </span>
@@ -56,40 +56,36 @@ function ProductForm({ onFinish, onFinishFailed, onChange }) {
           },
         ]}
       >
-        <Input placeholder="Set you price in weeks" />
+        <Input type="number" />
       </Form.Item>
 
       <Form.Item
-        label="Owner's Name"
-        name="ownerName"
-        rules={[{ required: true, message: 'Please input your Address!' }]}
+        name="plan"
+        label="Plan"
+        hasFeedback
+        rules={[{ required: true, message: 'Select a pricing plan' }]}
       >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="Email"
-        name="ownerEmail"
-        rules={[{ required: true, message: 'Please input your Email!' }]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="Mobile"
-        name="ownerMobile"
-        rules={[{ required: true, message: 'Please input your Mobile!' }]}
-      >
-        <Input />
+        <Select placeholder="Please select your rent schema">
+          <Option value="per day">Daily</Option>
+          <Option value="per week">Weekly</Option>
+          <Option value="per month">Monthly</Option>
+        </Select>
       </Form.Item>
 
       <Form.Item
         {...tailLayout}
-        rules={[{ required: true, message: `Please submit your medical equipment photo!` }]}
+        rules={[
+          {
+            required: true,
+            message: `Please submit your medical equipment photo!`,
+            whitespace: true,
+          },
+        ]}
       >
         <Upload {...props} onChange={onChange}>
           <Button>
-            <UploadOutlined /> Click to Upload
+            <UploadOutlined />
+            Click to Upload
           </Button>
         </Upload>
       </Form.Item>
@@ -101,6 +97,14 @@ function ProductForm({ onFinish, onFinishFailed, onChange }) {
           style={{ backgroundColor: '#faad14', borderColor: '#faad14' }}
         >
           Submit
+        </Button>
+
+        <Button
+          type="primary"
+          size="large"
+          style={{ backgroundColor: '#faad14', borderColor: '#faad14', margin: 60 }}
+        >
+          <Link to="/product">Go back</Link>
         </Button>
       </Form.Item>
     </Form>

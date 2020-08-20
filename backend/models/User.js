@@ -7,10 +7,13 @@ const userSchema = new Schema(
     email: String,
     password: String,
     address: String,
-    mobile: String,
-    catchPhrase: String,
-
-    imgURL: String,
+    mobile: Number,
+    catchPhrase: { type: String, max: 200 },
+    imgURL: {
+      type: String,
+      default:
+        'https://res.cloudinary.com/pakilloep/image/upload/v1590550352/MedApp/blue-simple-avatar_xiq6uu.png',
+    },
   },
   { timestamps: true }
 )

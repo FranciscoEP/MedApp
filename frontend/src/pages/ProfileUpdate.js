@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PROFILE_SERVICE from '../services/profile'
 import ProfileForm from '../components/ProfileForm'
 import { MyContext } from '../context'
-
+import { message } from 'antd'
 import '../index.css'
 
 export class ProfileUpdate extends Component {
@@ -25,9 +25,9 @@ export class ProfileUpdate extends Component {
     }
   }
 
-  componentDidMount = async (data) => {
-    const response = await PROFILE_SERVICE.PROFILE_UPDATE(data)
-    const profile = response.data.profile
+  componentDidMount = async (profileData) => {
+    const { data } = await PROFILE_SERVICE.PROFILE_UPDATE(profileData)
+    const { profile } = data
     this.setState({ profile })
   }
 
@@ -35,7 +35,12 @@ export class ProfileUpdate extends Component {
     const { imgURL } = this.state
     const response = await PROFILE_SERVICE.PROFILE_UPDATE({ ...profile, imgURL })
     this.context.logUser(response.data.profile)
+    this.profileSuccess()
     this.props.history.push('/profile')
+  }
+
+  profileSuccess = () => {
+    message.success('Profile updated')
   }
 
   render() {

@@ -29,7 +29,7 @@ const AppRouter = () => (
         <PrivateRoute exact path="/product/add" component={CreateProduct} />
         <PrivateRoute exact path="/product/:id" component={DetailProduct} />
         <PrivateRoute exact path="/product/edit/:id" component={EditProduct} />
-        <PrivateRoute exact path="/product/booking/:id" component={CreateBooking} />
+        <PrivateRoute exact path="/booking/add/:id" component={CreateBooking} />
         <PrivateRoute exact path="/bookings/" component={Bookings} />
         <PrivateRoute exact path="/bookings/:id" component={DetailBooking} />
         <PrivateRoute exact path="/bookings/edit/:id" component={EditBooking} />

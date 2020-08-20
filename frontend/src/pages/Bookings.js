@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import BOOKING_SERVICE from '../services/booking'
+import { message } from 'antd'
 import BookingCard from '../components/BookingCard'
 import '../index.css'
 
@@ -9,8 +10,7 @@ class Bookings extends Component {
   }
   componentDidMount = async () => {
     const response = await BOOKING_SERVICE.SHOW_BOOKINGS({})
-    const bookings = response.data.bookings
-
+    const { bookings } = response.data
     this.setState({
       bookings,
     })
@@ -21,6 +21,11 @@ class Bookings extends Component {
     const { bookings } = this.state
     const newArray = bookings.filter((booking) => booking._id !== id)
     this.setState({ bookings: newArray })
+    this.deleteBookingSuccess()
+  }
+
+  deleteBookingSuccess = () => {
+    message.success('Your booking was deleted successfully')
   }
 
   render() {

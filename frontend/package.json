@@ -6,12 +6,17 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "antd": "^4.2.2",
+    "antd": "^4.5.4",
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
+<<<<<<< HEAD
     "react-scripts": "^3.4.3"
+=======
+    "react-scripts": "^3.4.3",
+    "typescript": "^3.9.7"
+>>>>>>> 5614aad45a6576b4e519029f2e241f1841cf8a20
   },
   "scripts": {
     "start": "react-scripts start",
