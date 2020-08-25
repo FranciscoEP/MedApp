@@ -26,6 +26,10 @@ const sessionconfig = {
   secret: process.env.SECRET,
   resave: true,
   saveUninitialized: true,
+  cookie: {
+    SameSite: 'none',
+    Secure,
+  },
 }
 
 mongoose
