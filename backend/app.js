@@ -18,6 +18,7 @@ const dbconfig = {
 
 const corsconfig = {
   origin: [process.env.FRONTEND_ENDPOINT],
+  // origin: ['http://localhost:3001'],
   credentials: true,
 }
 
@@ -28,7 +29,8 @@ const sessionconfig = {
 }
 
 mongoose
-  .connect(process.env.DB, dbconfig)
+  // .connect(process.env.DB, dbconfig)
+  .connect('mongodb://localhost/backend', dbconfig)
   .then(() => console.log('Connected to Mongo!'))
   .catch((err) => console.error('Error connecting to Mongo', err))
 

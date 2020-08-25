@@ -11,7 +11,6 @@ export default class MyProvider extends Component {
 
   async componentDidMount() {
     const response = await handleAsync(AUTH_SERVICE.CURRENT_USER)
-
     this.logUser(response.user)
     this.setState({ loading: false })
   }

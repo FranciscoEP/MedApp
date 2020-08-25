@@ -17,7 +17,8 @@ function ProductForm({ onFinish, onChange, disableUpdate }) {
 
   const props = {
     name: 'imageURL',
-    action: 'https://immense-journey-87400.herokuapp.com/product/upload',
+    // action: 'http://localhost:3000/product/upload',
+    action: 'https://immense-joy-87400.herokuapp.com/product/upload',
   }
 
   return (

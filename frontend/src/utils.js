@@ -3,6 +3,7 @@ const handleAsync = async (asyncFn) => {
   try {
     const { data } = await asyncFn()
     result = data
+    console.log(result)
   } catch (e) {
     const { data } = e.response
     result = data
