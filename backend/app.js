@@ -28,7 +28,6 @@ const sessionconfig = {
   saveUninitialized: true,
   cookie: {
     SameSite: 'none',
-    Secure,
   },
 }
 
