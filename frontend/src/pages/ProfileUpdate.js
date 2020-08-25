@@ -48,7 +48,7 @@ export class ProfileUpdate extends Component {
       <div>
         <ProfileForm
           title="Equipment Information"
-          onFinish={this.onFinish}
+          onFinish={this?.onFinish}
           setImgURL={this.setImgURL}
           img={this.state.ImgURL}
           onChange={this.onChange}
