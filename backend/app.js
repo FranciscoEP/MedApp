@@ -28,7 +28,7 @@ const sessionconfig = {
   saveUninitialized: true,
 }
 
-const cookieParser = {
+const cookieParsing = {
   Set-Cookie: flavor=choco, SameSite=None; Secure
 }
 
@@ -47,7 +47,7 @@ app.use(passport.session())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cookieParser())
+app.use(cookieParser(cookieParsing))
 
 const index = require('./routes/index')
 const auth = require('./routes/auth')
