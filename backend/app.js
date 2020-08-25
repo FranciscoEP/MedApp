@@ -29,7 +29,7 @@ const sessionconfig = {
 }
 
 const cookieParsing = {
-  Set-Cookie: flavor=choco, SameSite=None; Secure
+  newCookie: flavor=choco, SameSite=None; Secure
 }
 
 mongoose
