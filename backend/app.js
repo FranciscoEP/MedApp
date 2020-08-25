@@ -43,7 +43,7 @@ app.use(passport.session())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cookieParser(cookieParsing))
+app.use(cookieParser())
 
 const index = require('./routes/index')
 const auth = require('./routes/auth')
