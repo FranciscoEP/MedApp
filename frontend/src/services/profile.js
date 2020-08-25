@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://immense-journey-87400.herokuapp.com/'
+const baseURL = 'http://immense-journey-87400.herokuapp.com'
 
 // const baseURL = 'http://localhost:3000/'
 
@@ -11,7 +11,7 @@ const service = axios.create({
 
 const PROFILE_SERVICE = {
   PROFILE_UPDATE: async (data) => {
-    return await service.patch('/profile/edit', data)
+    return await service.put('/profile/edit', data)
   },
 }
 
