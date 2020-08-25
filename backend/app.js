@@ -29,7 +29,7 @@ const sessionconfig = {
 }
 
 const cookieParsing = {
-  SameSite: None,
+  SameSite: 'None',
   Secure,
 }
 
