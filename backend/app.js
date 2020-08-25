@@ -28,6 +28,10 @@ const sessionconfig = {
   saveUninitialized: true,
 }
 
+const cookieParser = {
+  Set-Cookie: flavor=choco, SameSite=None; Secure
+}
+
 mongoose
   .connect(process.env.DB, dbconfig)
   // .connect('mongodb://localhost/backend', dbconfig)
