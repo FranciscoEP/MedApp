@@ -29,8 +29,8 @@ const sessionconfig = {
 }
 
 mongoose
-  // .connect(process.env.DB, dbconfig)
-  .connect('mongodb://localhost/backend', dbconfig)
+  .connect(process.env.DB, dbconfig)
+  // .connect('mongodb://localhost/backend', dbconfig)
   .then(() => console.log('Connected to Mongo!'))
   .catch((err) => console.error('Error connecting to Mongo', err))
 
