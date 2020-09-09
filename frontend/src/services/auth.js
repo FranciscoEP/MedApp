@@ -5,6 +5,8 @@ const baseURL = 'https://immense-journey-87400.herokuapp.com'
 
 const service = axios.create({
   baseURL,
+  allowedHeaders: 'X-Requested-With, Content-Type, Authorization',
+  methods: 'GET, POST, PATCH, PUT, POST, DELETE, OPTIONS'
   withCredentials: true,
 })
 
