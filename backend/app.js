@@ -20,17 +20,16 @@ const corsconfig = {
   origin: [process.env.FRONTEND_ENDPOINT],
   // origin: ['http://localhost:3001'],
   credentials: true,
+  allowedHeaders: 'X-Requested-With, Content-Type, Authorization',
+  methods: 'GET, POST, PATCH, PUT, POST, DELETE, OPTIONS'
 }
 
 const sessionconfig = {
   secret: process.env.SECRET,
   resave: true,
   saveUninitialized: true,
-  cookie: {
-    SameSite: 'none',
-    Secure: false,
   },
-}
+
 
 mongoose
   .connect(process.env.DB, dbconfig)
