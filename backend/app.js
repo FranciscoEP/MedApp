@@ -19,7 +19,7 @@ const corsconfig = {
   origin: ['https://med-app-iota.now.sh', 'http://localhost:3001'],
   // origin: ['http://localhost:3001'],
   credentials: true,
-  allowedHeadera: ['Content-Type: application/json'],
+  allowedHeader: ['Content-Type', 'X-Powered-By', 'Accept-Ranges', 'Connection'],
 }
 
 const sessionconfig = {
