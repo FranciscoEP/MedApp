@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://immense-journey-87400.herokuapp.com'
+const baseURL = 'https://immense-journey-87400.herokuapp.com/'
 
 // const baseURL = 'http://localhost:3000/'
 
