@@ -8,19 +8,15 @@ const service = axios.create({
   withCredentials: true,
 })
 
-const AUTH_SERVICE = {
-  SIGNUP: async (data) => {
-    return await service.post('/signup', data)
-  },
-  LOGIN: async (data) => {
-    return await service.post('/login', data)
-  },
-  LOGOUT: async () => {
-    return await service.get('/logout')
-  },
-  CURRENT_USER: async () => {
-    return await service.get('/currentUser')
-  },
+export const SIGNUP = async (data) => {
+  return await service.post('/signup', data)
 }
-
-export default AUTH_SERVICE
+export const LOGIN = async (data) => {
+  return await service.post('/login', data)
+}
+export const LOGOUT = async () => {
+  return await service.get('/logout')
+}
+export const CURRENT_USER = async () => {
+  return await service.get('/currentUser')
+}
