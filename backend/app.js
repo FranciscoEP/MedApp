@@ -13,14 +13,13 @@ const dbconfig = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-  useFindAndModify: true,
 }
 
 const corsconfig = {
   origin: ['https://med-app-iota.now.sh', 'http://localhost:3001'],
   // origin: ['http://localhost:3001'],
   credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeadera: ['Content-Type: application/json'],
 }
 
 const sessionconfig = {
@@ -29,8 +28,8 @@ const sessionconfig = {
   saveUninitialized: true,
 }
 
-//.connect('mongodb://localhost/backend', dbconfig)
 mongoose
+  // .connect('mongodb://localhost/backend', dbconfig)
   .connect(process.env.DB, dbconfig)
   .then(() => console.log('Connected to Mongo!'))
   .catch((err) => console.error('Error connecting to Mongo', err))
@@ -45,6 +44,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
+app.disable('x-powered-by')
 
 const index = require('./routes/index')
 const auth = require('./routes/auth')
