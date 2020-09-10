@@ -17,7 +17,7 @@ const dbconfig = {
 }
 
 const corsconfig = {
-  origin: ['https://med-app-iota.now.sh'],
+  origin: ['http://med-app-iota.now.sh/'],
   // origin: ['http://localhost:3001'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
