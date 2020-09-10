@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://immense-journey-87400.herokuapp.com/'
+const baseURL = 'https://immense-journey-87400.herokuapp.com/auth'
 // const baseURL = 'http://localhost:3000/'
 
 const service = axios.create({
@@ -10,16 +10,16 @@ const service = axios.create({
 
 const AUTH_SERVICE = {
   SIGNUP: async (data) => {
-    return await service.post('/auth/signup', data)
+    return await service.post('/signup', data)
   },
   LOGIN: async (data) => {
-    return await service.post('/auth/login', data)
+    return await service.post('/login', data)
   },
   LOGOUT: async () => {
-    return await service.get('/auth/logout')
+    return await service.get('/logout')
   },
   CURRENT_USER: async () => {
-    return await service.get('/auth/currentUser')
+    return await service.get('/currentUser')
   },
 }
 
