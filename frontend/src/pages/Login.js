@@ -19,6 +19,7 @@ class Login extends Component {
     msg: null,
     loading: false,
   }
+  abortController = new AbortController()
 
   onFinish = async (values) => {
     this.setState({ loading: true })
@@ -39,6 +40,25 @@ class Login extends Component {
     const { login } = this.state
     login[e.target.name] = e.target.value
     this.setState({ login })
+  }
+
+  componentDidMount() {
+    fetch(RANDOM_USER_API, { signal: this.abortController.signal })
+      .then((results) => results.json())
+      .then((data) =>
+        this.setState({
+          user: data,
+        })
+      )
+      .catch((err) => {
+        console.log('err', err.name)
+        if (err.name === 'AbortError') return
+        throw error
+      })
+  }
+
+  componentWillUnmount() {
+    this.abortController.abort()
   }
 
   render() {
