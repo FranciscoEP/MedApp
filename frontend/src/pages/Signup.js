@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Input, Button } from 'antd'
-import { SIGNUP } from '../services/auth'
+import AUTH_SERVICE from '../services/auth'
 import handleAsync from '../utils'
 import '../index.css'
 
@@ -20,7 +20,7 @@ class Signup extends Component {
 
   onFinish = async (values) => {
     this.setState({ loading: true })
-    const response = await handleAsync(() => SIGNUP(values))
+    const response = await handleAsync(() => AUTH_SERVICE.SIGNUP(values))
 
     if (response.err) {
       this.setState({ msg: 'A user with the given email is already registered' })

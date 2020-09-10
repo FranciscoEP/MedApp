@@ -1,5 +1,5 @@
 import React, { createContext, Component } from 'react'
-import { CURRENT_USER, LOGOUT } from './services/auth'
+import AUTH_SERVICE from './services/auth'
 import handleAsync from './utils'
 export const MyContext = createContext()
 
@@ -10,7 +10,7 @@ export default class MyProvider extends Component {
   }
 
   async componentDidMount() {
-    const response = await handleAsync(CURRENT_USER)
+    const response = await handleAsync(AUTH_SERVICE.CURRENT_USER)
     this.logUser(response.user)
     this.setState({ loading: false })
   }
@@ -20,7 +20,7 @@ export default class MyProvider extends Component {
   }
 
   logout = async () => {
-    await LOGOUT()
+    await AUTH_SERVICE.LOGOUT()
     this.setState({
       loggedUser: null,
     })

@@ -3,7 +3,7 @@ import { Form, Input, Button } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import '../index.css'
 import { MyContext } from '../context'
-import { LOGIN } from '../services/auth'
+import AUTH_SERVICE from '../services/auth'
 import handleAsync from '../utils'
 
 const layout = {
@@ -22,7 +22,7 @@ class Login extends Component {
 
   onFinish = async (values) => {
     this.setState({ loading: true })
-    const response = await handleAsync(() => LOGIN(values))
+    const response = await handleAsync(() => AUTH_SERVICE.LOGIN(values))
 
     if (response.err) {
       this.setState({ msg: 'Email or password incorrect.' })
