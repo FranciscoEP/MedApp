@@ -19,18 +19,18 @@ const corsconfig = {
   origin: ['https://med-app-iota.now.sh', 'http://localhost:3001'],
   // origin: ['http://localhost:3001'],
   credentials: true,
-  allowedHeader: ['Content-Type', 'X-Powered-By', 'Accept-Ranges', 'Connection'],
+  allowedHeaders: 'X-Requested-With, Content-Type, Authorization',
 }
 
 const sessionconfig = {
   secret: process.env.SECRET,
-  resave: true,
+  resave: false,
   saveUninitialized: true,
 }
 
 mongoose
-  // .connect('mongodb://localhost/backend', dbconfig)
-  .connect(process.env.DB, dbconfig)
+  .connect('mongodb://localhost/backend', dbconfig)
+  // .connect(process.env.DB, dbconfig)
   .then(() => console.log('Connected to Mongo!'))
   .catch((err) => console.error('Error connecting to Mongo', err))
 
@@ -44,7 +44,11 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-app.disable('x-powered-by')
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  console.log(res.locals.user)
+  next()
+})
 
 const index = require('./routes/index')
 const auth = require('./routes/auth')

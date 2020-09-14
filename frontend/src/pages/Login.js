@@ -43,7 +43,7 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    fetch(RANDOM_USER_API, { signal: this.abortController.signal })
+    fetch(AUTH_SERVICE.LOGIN, { signal: this.abortController.signal })
       .then((results) => results.json())
       .then((data) =>
         this.setState({
@@ -53,7 +53,7 @@ class Login extends Component {
       .catch((err) => {
         console.log('err', err.name)
         if (err.name === 'AbortError') return
-        throw error
+        throw err
       })
   }
 
